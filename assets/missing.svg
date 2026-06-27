@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="пропущенные значения">
+  <rect width="640" height="360" fill="#f9fbfc"/>
+  <text x="40" y="48" font-family="Arial" font-size="24" font-weight="700" fill="#17202a">NaN и пропуски</text>
+  <g transform="translate(72 88)" font-family="Arial" font-size="18" text-anchor="middle">
+    <rect width="90" height="52" rx="6" fill="#ffffff" stroke="#d9e0e7"/><text x="45" y="33">12</text>
+    <rect x="98" width="90" height="52" rx="6" fill="#fff2f0" stroke="#b42318"/><text x="143" y="33">NaN</text>
+    <rect x="196" width="90" height="52" rx="6" fill="#ffffff" stroke="#d9e0e7"/><text x="241" y="33">18</text>
+    <rect y="60" width="90" height="52" rx="6" fill="#fff2f0" stroke="#b42318"/><text x="45" y="93">NaN</text>
+    <rect x="98" y="60" width="90" height="52" rx="6" fill="#ffffff" stroke="#d9e0e7"/><text x="143" y="93">5</text>
+    <rect x="196" y="60" width="90" height="52" rx="6" fill="#ffffff" stroke="#d9e0e7"/><text x="241" y="93">8</text>
+  </g>
+  <text x="390" y="128" font-family="Consolas" font-size="20" fill="#2563eb">df.isna().sum()</text>
+  <text x="390" y="178" font-family="Consolas" font-size="20" fill="#0f766e">df.dropna()</text>
+  <text x="390" y="228" font-family="Consolas" font-size="20" fill="#a15c00">df.fillna(0)</text>
+  <text x="84" y="298" font-family="Arial" font-size="18" fill="#365267">сначала найти, потом удалить или заполнить</text>
+</svg>

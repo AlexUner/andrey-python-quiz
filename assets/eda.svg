@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="первичный анализ данных">
+  <rect width="640" height="360" fill="#f9fbfc"/>
+  <text x="40" y="48" font-family="Arial" font-size="24" font-weight="700" fill="#17202a">Первичный анализ данных</text>
+  <g font-family="Consolas" font-size="19">
+    <rect x="64" y="88" width="210" height="44" rx="8" fill="#e8f0ff" stroke="#2563eb"/>
+    <text x="88" y="116" fill="#17202a">df.head()</text>
+    <rect x="64" y="148" width="210" height="44" rx="8" fill="#e8f0ff" stroke="#2563eb"/>
+    <text x="88" y="176" fill="#17202a">df.info()</text>
+    <rect x="64" y="208" width="210" height="44" rx="8" fill="#e8f0ff" stroke="#2563eb"/>
+    <text x="88" y="236" fill="#17202a">df.describe()</text>
+    <rect x="338" y="88" width="230" height="44" rx="8" fill="#d9f3ef" stroke="#0f766e"/>
+    <text x="362" y="116" fill="#17202a">df.isna().sum()</text>
+    <rect x="338" y="148" width="230" height="44" rx="8" fill="#d9f3ef" stroke="#0f766e"/>
+    <text x="362" y="176" fill="#17202a">unique()</text>
+    <rect x="338" y="208" width="230" height="44" rx="8" fill="#d9f3ef" stroke="#0f766e"/>
+    <text x="362" y="236" fill="#17202a">corr()</text>
+  </g>
+  <text x="72" y="306" font-family="Arial" font-size="18" fill="#365267">сначала понять данные, потом строить выводы</text>
+</svg>

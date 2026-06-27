@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="groupby">
+  <rect width="640" height="360" fill="#f9fbfc"/>
+  <text x="40" y="48" font-family="Arial" font-size="24" font-weight="700" fill="#17202a">groupby: сгруппировать и агрегировать</text>
+  <g transform="translate(58 88)" font-family="Arial" font-size="16">
+    <rect width="190" height="184" rx="8" fill="#ffffff" stroke="#d9e0e7"/>
+    <text x="30" y="34">Class</text><text x="116" y="34">Data</text>
+    <text x="42" y="74">A</text><text x="122" y="74">4</text>
+    <text x="42" y="112">B</text><text x="122" y="112">7</text>
+    <text x="42" y="150">A</text><text x="122" y="150">6</text>
+    <path d="M0 48h190M0 86h190M0 124h190M94 0v184" stroke="#d9e0e7"/>
+  </g>
+  <text x="294" y="150" font-family="Consolas" font-size="18" fill="#2563eb">groupby('Class').sum()</text>
+  <path d="M272 176h92" stroke="#2563eb" stroke-width="4"/>
+  <path d="M350 160l22 16-22 16" fill="none" stroke="#2563eb" stroke-width="4"/>
+  <g transform="translate(416 112)" font-family="Arial" font-size="16">
+    <rect width="150" height="122" rx="8" fill="#d9f3ef" stroke="#0f766e"/>
+    <text x="28" y="34">A</text><text x="96" y="34">10</text>
+    <text x="28" y="78">B</text><text x="96" y="78">7</text>
+    <path d="M0 50h150M75 0v122" stroke="#a9d8d0"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="pivot table">
+  <rect width="640" height="360" fill="#f9fbfc"/>
+  <text x="40" y="48" font-family="Arial" font-size="24" font-weight="700" fill="#17202a">Сводная таблица</text>
+  <text x="58" y="94" font-family="Consolas" font-size="18" fill="#2563eb">index='Room', columns='Position'</text>
+  <g transform="translate(90 126)" font-family="Arial" font-size="17" text-anchor="middle">
+    <rect width="440" height="170" rx="8" fill="#ffffff" stroke="#d9e0e7"/>
+    <rect width="440" height="42" rx="8" fill="#e8f0ff" stroke="#2563eb"/>
+    <text x="170" y="27">Floor</text><text x="320" y="27">Ceiling</text>
+    <text x="58" y="82">Living</text><text x="170" y="82">23.4</text><text x="320" y="82">24.1</text>
+    <text x="58" y="128">Bath</text><text x="170" y="128">26.0</text><text x="320" y="128">25.7</text>
+    <path d="M110 42v128M250 42v128M0 104h440" stroke="#d9e0e7"/>
+  </g>
+</svg>

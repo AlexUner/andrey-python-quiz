@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="axis 0 и axis 1">
+  <rect width="640" height="360" fill="#f9fbfc"/>
+  <text x="40" y="48" font-family="Arial" font-size="24" font-weight="700" fill="#17202a">Оси агрегации</text>
+  <g transform="translate(90 90)" stroke="#0f766e" fill="#d9f3ef" font-family="Arial" font-size="18" text-anchor="middle">
+    <rect width="70" height="54" rx="5"/><text x="35" y="34">1</text>
+    <rect x="78" width="70" height="54" rx="5"/><text x="113" y="34">2</text>
+    <rect x="156" width="70" height="54" rx="5"/><text x="191" y="34">3</text>
+    <rect y="62" width="70" height="54" rx="5"/><text x="35" y="96">4</text>
+    <rect x="78" y="62" width="70" height="54" rx="5"/><text x="113" y="96">5</text>
+    <rect x="156" y="62" width="70" height="54" rx="5"/><text x="191" y="96">6</text>
+  </g>
+  <path d="M124 72v142M202 72v142M280 72v142" stroke="#2563eb" stroke-width="3" stroke-dasharray="7 7"/>
+  <text x="362" y="126" font-family="Consolas" font-size="20" fill="#2563eb">axis=0</text>
+  <text x="362" y="154" font-family="Arial" font-size="17" fill="#365267">сумма по строкам</text>
+  <text x="362" y="184" font-family="Consolas" font-size="20" fill="#17202a">[5, 7, 9]</text>
+  <path d="M78 117h246M78 179h246" stroke="#a15c00" stroke-width="3" stroke-dasharray="7 7"/>
+  <text x="362" y="236" font-family="Consolas" font-size="20" fill="#a15c00">axis=1</text>
+  <text x="362" y="264" font-family="Arial" font-size="17" fill="#365267">сумма по столбцам</text>
+  <text x="362" y="294" font-family="Consolas" font-size="20" fill="#17202a">[6, 15]</text>
+</svg>
