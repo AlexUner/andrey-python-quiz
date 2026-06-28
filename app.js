@@ -453,8 +453,62 @@ cards.push(...(window.extraCards || []));
 const totalCards = cards.length;
 const ticketSize = 20;
 const storeKey = "lecture01-cards-progress-v2";
+const langKey = "lecture01-cards-lang";
+const copy = {
+  ru: {
+    subtitle: "NumPy, Pandas, анализ данных",
+    stats: "Статистика",
+    correct: "правильно",
+    total: "всего",
+    answers: "ответов",
+    ticket: "Билет",
+    final: "Полный тест",
+    startTicket: "Начать билет",
+    startFinal: "Начать полный тест",
+    reset: "Сбросить прогресс",
+    home: "На главную",
+    question: "Вопрос",
+    of: "из",
+    lecture: "Лекция 1",
+    next: "Дальше",
+    skip: "Пропустить",
+    finish: "Завершить",
+    right: "Верно",
+    remember: "Нужно запомнить",
+    resultTicket: "Результат билета",
+    resultFinal: "Результат полного теста",
+    cumulative: "Накопленный результат",
+    newTicket: "Новый билет"
+  },
+  en: {
+    subtitle: "NumPy, Pandas, data analysis",
+    stats: "Statistics",
+    correct: "correct",
+    total: "total",
+    answers: "answers",
+    ticket: "Ticket",
+    final: "Full test",
+    startTicket: "Start ticket",
+    startFinal: "Start full test",
+    reset: "Reset progress",
+    home: "Home",
+    question: "Question",
+    of: "of",
+    lecture: "Lecture 1",
+    next: "Next",
+    skip: "Skip",
+    finish: "Finish",
+    right: "Correct",
+    remember: "Remember",
+    resultTicket: "Ticket result",
+    resultFinal: "Full test result",
+    cumulative: "Cumulative result",
+    newTicket: "New ticket"
+  }
+};
 const app = document.getElementById("app");
 let progress = loadProgress();
+let uiLang = localStorage.getItem(langKey) === "en" ? "en" : "ru";
 let state = {
   screen: "home",
   deck: [],
@@ -463,6 +517,43 @@ let state = {
   selected: null,
   mode: "ticket"
 };
+
+function t(key) {
+  return copy[uiLang][key] || copy.ru[key] || key;
+}
+
+function setLang(lang) {
+  uiLang = lang === "en" ? "en" : "ru";
+  localStorage.setItem(langKey, uiLang);
+  render();
+}
+
+function translatedCard(card) {
+  if (uiLang !== "en") return card;
+  return window.cardTranslations?.en?.[card.id] || card;
+}
+
+function localTopic(card) {
+  return translatedCard(card).topic || card.topic;
+}
+
+function localQuestion(card) {
+  return translatedCard(card).question || card.question;
+}
+
+function localAnswer(card) {
+  return translatedCard(card).answer || card.answer;
+}
+
+function localExplain(card) {
+  return translatedCard(card).explain || card.explain;
+}
+
+function localChoice(card, choice) {
+  if (uiLang !== "en") return choice;
+  const index = card.choices.indexOf(choice);
+  return translatedCard(card).choices?.[index] || choice;
+}
 
 function loadProgress() {
   try {
@@ -531,14 +622,20 @@ function clearProgress() {
   render();
 }
 
-function topbar(subtitle = "NumPy, Pandas, анализ данных") {
+function topbar(subtitle = t("subtitle")) {
   return `
     <div class="topbar">
       <div class="brand">
-        <h1>Лекция 1</h1>
+        <h1>${t("lecture")}</h1>
         <p>${subtitle}</p>
       </div>
-      ${state.screen === "home" ? "" : `<button class="icon-btn" type="button" onclick="goHome()" aria-label="На главную">←</button>`}
+      <div class="top-actions">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button class="${uiLang === "ru" ? "active" : ""}" type="button" onclick="setLang('ru')">RU</button>
+          <button class="${uiLang === "en" ? "active" : ""}" type="button" onclick="setLang('en')">EN</button>
+        </div>
+        ${state.screen === "home" ? "" : `<button class="icon-btn" type="button" onclick="goHome()" aria-label="${t("home")}">←</button>`}
+      </div>
     </div>
   `;
 }
@@ -553,23 +650,23 @@ function renderHome() {
   const unlocked = isFinalUnlocked();
   app.innerHTML = `
     ${topbar()}
-    <section class="stats" aria-label="Статистика">
-      <div class="stat"><strong>${learned}</strong><span>правильно</span></div>
-      <div class="stat"><strong>${totalCards}</strong><span>всего</span></div>
-      <div class="stat"><strong>${progress.attempts || 0}</strong><span>ответов</span></div>
+    <section class="stats" aria-label="${t("stats")}">
+      <div class="stat"><strong>${learned}</strong><span>${t("correct")}</span></div>
+      <div class="stat"><strong>${totalCards}</strong><span>${t("total")}</span></div>
+      <div class="stat"><strong>${progress.attempts || 0}</strong><span>${t("answers")}</span></div>
     </section>
     <section class="home-grid">
       <article class="mode-card">
-        <h2>Билет</h2>
-        <button class="primary-btn" type="button" onclick="startTicket()">Начать билет</button>
+        <h2>${t("ticket")}</h2>
+        <button class="primary-btn" type="button" onclick="startTicket()">${t("startTicket")}</button>
       </article>
       <article class="mode-card">
-        <h2>Полный тест</h2>
-        <button class="${unlocked ? "primary-btn" : "ghost-btn"}" type="button" ${unlocked ? "" : "disabled"} onclick="startFinalTest()">Начать полный тест</button>
+        <h2>${t("final")}</h2>
+        <button class="${unlocked ? "primary-btn" : "ghost-btn"}" type="button" ${unlocked ? "" : "disabled"} onclick="startFinalTest()">${t("startFinal")}</button>
       </article>
     </section>
     <div class="actions single">
-      <button class="danger-btn" type="button" onclick="clearProgress()">Сбросить прогресс</button>
+      <button class="danger-btn" type="button" onclick="clearProgress()">${t("reset")}</button>
     </div>
   `;
 }
@@ -584,26 +681,26 @@ function renderQuiz() {
   const current = state.index + 1;
   const pct = Math.round((state.index / state.deck.length) * 100);
   app.innerHTML = `
-    ${topbar(state.mode === "final" ? "Полный тест" : "Билет")}
+    ${topbar(state.mode === "final" ? t("final") : t("ticket"))}
     <section class="toolbar">
       <div class="progress-wrap">
         <div class="progress-line"><div class="progress-fill" style="width:${pct}%"></div></div>
-        <div class="progress-meta"><span>Вопрос ${current} из ${state.deck.length}</span><span>${masteredCount()} из ${totalCards}</span></div>
+        <div class="progress-meta"><span>${t("question")} ${current} ${t("of")} ${state.deck.length}</span><span>${masteredCount()} ${t("of")} ${totalCards}</span></div>
       </div>
       <div class="number-grid">${state.deck.map((item, idx) => numberButton(item, idx)).join("")}</div>
     </section>
     <article class="study-card">
       <img class="visual" src="${card.visual}" alt="">
       <div class="study-main">
-        <div class="tag-row"><span class="tag">${card.topic}</span><span class="tag">Лекция 1</span></div>
-        <h2 class="question">${escapeHtml(card.question)}</h2>
+        <div class="tag-row"><span class="tag">${escapeHtml(localTopic(card))}</span><span class="tag">${t("lecture")}</span></div>
+        <h2 class="question">${escapeHtml(localQuestion(card))}</h2>
         <div class="answer-list">
           ${getChoices(card).map(choice => answerButton(card, choice, answered)).join("")}
         </div>
         ${answered ? reveal(card, answered) : ""}
         <div class="actions ${answered ? "" : "single"}">
-          ${answered ? `<button class="ghost-btn" type="button" onclick="nextQuestion()">Дальше</button>` : `<button class="ghost-btn" type="button" onclick="skipQuestion()">Пропустить</button>`}
-          ${answered ? `<button class="primary-btn" type="button" onclick="goHome()">Завершить</button>` : ""}
+          ${answered ? `<button class="ghost-btn" type="button" onclick="nextQuestion()">${t("next")}</button>` : `<button class="ghost-btn" type="button" onclick="skipQuestion()">${t("skip")}</button>`}
+          ${answered ? `<button class="primary-btn" type="button" onclick="goHome()">${t("finish")}</button>` : ""}
         </div>
       </div>
     </article>
@@ -629,15 +726,15 @@ function answerButton(card, choice, answered) {
     if (choice === card.answer) cls = "correct";
     if (choice === answered.choice && !answered.correct) cls = "incorrect";
   }
-  return `<button class="answer-btn ${cls}" type="button" ${answered ? "disabled" : ""} onclick="chooseAnswer(${card.id}, ${JSON.stringify(choice).replace(/"/g, "&quot;")})">${formatInline(choice)}</button>`;
+  return `<button class="answer-btn ${cls}" type="button" ${answered ? "disabled" : ""} onclick="chooseAnswer(${card.id}, ${JSON.stringify(choice).replace(/"/g, "&quot;")})">${formatInline(localChoice(card, choice))}</button>`;
 }
 
 function reveal(card, answered) {
-  const title = answered.correct ? "Верно" : "Нужно запомнить";
+  const title = answered.correct ? t("right") : t("remember");
   return `
     <div class="reveal">
-      <strong>${title}: ${formatInline(card.answer)}</strong>
-      <p>${escapeHtml(card.explain)}</p>
+      <strong>${title}: ${formatInline(localAnswer(card))}</strong>
+      <p>${escapeHtml(localExplain(card))}</p>
     </div>
   `;
 }
@@ -678,20 +775,20 @@ function renderResult() {
   const wrongCards = state.deck.filter(card => state.answered[card.id] && !state.answered[card.id].correct);
   const unlocked = isFinalUnlocked();
   app.innerHTML = `
-    ${topbar(state.mode === "final" ? "Результат полного теста" : "Результат билета")}
+    ${topbar(state.mode === "final" ? t("resultFinal") : t("resultTicket"))}
     <article class="result-card mode-card">
-      <h2>${right} из ${total}</h2>
-      <p>Накопленный результат: ${masteredCount()} из ${totalCards}.</p>
+      <h2>${right} ${t("of")} ${total}</h2>
+      <p>${t("cumulative")}: ${masteredCount()} ${t("of")} ${totalCards}.</p>
       <div class="actions">
-        <button class="primary-btn" type="button" onclick="startTicket()">Новый билет</button>
-        <button class="ghost-btn" type="button" ${unlocked ? "" : "disabled"} onclick="startFinalTest()">Полный тест</button>
+        <button class="primary-btn" type="button" onclick="startTicket()">${t("newTicket")}</button>
+        <button class="ghost-btn" type="button" ${unlocked ? "" : "disabled"} onclick="startFinalTest()">${t("final")}</button>
       </div>
     </article>
     <section class="summary-list">
       ${wrongCards.map(card => `
         <div class="summary-item">
-          <strong>${escapeHtml(card.question)}</strong>
-          <span>${formatInline(card.answer)}</span>
+          <strong>${escapeHtml(localQuestion(card))}</strong>
+          <span>${formatInline(localAnswer(card))}</span>
         </div>
       `).join("")}
     </section>

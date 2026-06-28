@@ -67,6 +67,39 @@ input {
   font-size: 13px;
 }
 
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.lang-toggle {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+  min-width: 86px;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #ffffff;
+}
+
+.lang-toggle button {
+  min-height: 34px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.lang-toggle button.active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
 .icon-btn,
 .small-btn,
 .primary-btn,
