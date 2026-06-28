@@ -1,12 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="графики Pandas">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Схема графиков">
   <rect width="640" height="360" fill="#f9fbfc"/>
-  <text x="40" y="48" font-family="Arial" font-size="24" font-weight="700" fill="#17202a">Быстрые графики Pandas</text>
   <line x1="82" y1="286" x2="560" y2="286" stroke="#d9e0e7" stroke-width="2"/>
   <line x1="82" y1="82" x2="82" y2="286" stroke="#d9e0e7" stroke-width="2"/>
-  <rect x="128" y="170" width="52" height="116" fill="#d9f3ef" stroke="#0f766e"/>
-  <rect x="210" y="128" width="52" height="158" fill="#d9f3ef" stroke="#0f766e"/>
-  <rect x="292" y="204" width="52" height="82" fill="#d9f3ef" stroke="#0f766e"/>
-  <rect x="374" y="104" width="52" height="182" fill="#d9f3ef" stroke="#0f766e"/>
-  <polyline points="128,170 210,128 292,204 374,104 456,146 528,118" fill="none" stroke="#2563eb" stroke-width="4"/>
-  <text x="104" y="330" font-family="Consolas" font-size="19" fill="#17202a">df['Temperature'].plot(kind='bar')</text>
+  <rect x="128" y="170" width="52" height="116" fill="#d9f3ef" stroke="#0f766e" stroke-width="3"/>
+  <rect x="210" y="128" width="52" height="158" fill="#d9f3ef" stroke="#0f766e" stroke-width="3"/>
+  <rect x="292" y="204" width="52" height="82" fill="#d9f3ef" stroke="#0f766e" stroke-width="3"/>
+  <rect x="374" y="104" width="52" height="182" fill="#d9f3ef" stroke="#0f766e" stroke-width="3"/>
+  <polyline points="128,170 210,128 292,204 374,104 456,146 528,118" fill="none" stroke="#2563eb" stroke-width="5"/>
+  <g fill="#2563eb"><circle cx="128" cy="170" r="7"/><circle cx="210" cy="128" r="7"/><circle cx="292" cy="204" r="7"/><circle cx="374" cy="104" r="7"/><circle cx="456" cy="146" r="7"/><circle cx="528" cy="118" r="7"/></g>
 </svg>

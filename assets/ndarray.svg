@@ -1,29 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="ndarray и список Python">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Схема числового массива">
   <rect width="640" height="360" fill="#f9fbfc"/>
-  <text x="40" y="48" font-family="Arial" font-size="24" font-weight="700" fill="#17202a">ndarray: быстрый числовой массив</text>
-  <g transform="translate(58 92)">
-    <rect width="72" height="58" rx="6" fill="#d9f3ef" stroke="#0f766e"/>
-    <rect x="78" width="72" height="58" rx="6" fill="#d9f3ef" stroke="#0f766e"/>
-    <rect x="156" width="72" height="58" rx="6" fill="#d9f3ef" stroke="#0f766e"/>
-    <rect x="234" width="72" height="58" rx="6" fill="#d9f3ef" stroke="#0f766e"/>
-    <text x="29" y="37" font-family="Consolas" font-size="20" fill="#17202a">1</text>
-    <text x="107" y="37" font-family="Consolas" font-size="20" fill="#17202a">2</text>
-    <text x="185" y="37" font-family="Consolas" font-size="20" fill="#17202a">3</text>
-    <text x="263" y="37" font-family="Consolas" font-size="20" fill="#17202a">4</text>
-    <text x="24" y="92" font-family="Arial" font-size="16" fill="#365267">один тип данных</text>
+  <g transform="translate(74 94)" fill="#d9f3ef" stroke="#0f766e" stroke-width="3">
+    <rect width="76" height="56" rx="6"/><rect x="86" width="76" height="56" rx="6"/><rect x="172" width="76" height="56" rx="6"/><rect x="258" width="76" height="56" rx="6"/>
   </g>
-  <g transform="translate(58 230)">
-    <rect width="72" height="58" rx="6" fill="#ffffff" stroke="#d9e0e7"/>
-    <rect x="78" width="72" height="58" rx="6" fill="#ffffff" stroke="#d9e0e7"/>
-    <rect x="156" width="72" height="58" rx="6" fill="#ffffff" stroke="#d9e0e7"/>
-    <text x="23" y="37" font-family="Consolas" font-size="18" fill="#17202a">1</text>
-    <text x="99" y="37" font-family="Consolas" font-size="18" fill="#17202a">'a'</text>
-    <text x="176" y="37" font-family="Consolas" font-size="18" fill="#17202a">3.5</text>
-    <text x="14" y="92" font-family="Arial" font-size="16" fill="#64707d">обычный list может смешивать типы</text>
+  <path d="M442 122h96" stroke="#2563eb" stroke-width="6" stroke-linecap="round"/>
+  <path d="M520 100l30 22-30 22" fill="none" stroke="#2563eb" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(74 226)" fill="#ffffff" stroke="#d9e0e7" stroke-width="3">
+    <rect width="76" height="56" rx="6"/><rect x="86" width="76" height="56" rx="6"/><rect x="172" width="76" height="56" rx="6"/>
   </g>
-  <path d="M394 148h132" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
-  <path d="M516 132l28 16-28 16" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="382" y="110" font-family="Arial" font-size="18" fill="#17202a">операции над массивом</text>
-  <text x="404" y="196" font-family="Consolas" font-size="22" fill="#0f766e">a * 2</text>
-  <text x="404" y="232" font-family="Arial" font-size="16" fill="#365267">без ручного цикла</text>
+  <g transform="translate(410 220)" fill="#e8f0ff" stroke="#2563eb" stroke-width="3">
+    <rect width="76" height="56" rx="6"/><rect x="86" width="76" height="56" rx="6"/>
+  </g>
 </svg>

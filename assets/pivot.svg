@@ -1,13 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="pivot table">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Схема сводной таблицы">
   <rect width="640" height="360" fill="#f9fbfc"/>
-  <text x="40" y="48" font-family="Arial" font-size="24" font-weight="700" fill="#17202a">Сводная таблица</text>
-  <text x="58" y="94" font-family="Consolas" font-size="18" fill="#2563eb">index='Room', columns='Position'</text>
-  <g transform="translate(90 126)" font-family="Arial" font-size="17" text-anchor="middle">
-    <rect width="440" height="170" rx="8" fill="#ffffff" stroke="#d9e0e7"/>
-    <rect width="440" height="42" rx="8" fill="#e8f0ff" stroke="#2563eb"/>
-    <text x="170" y="27">Floor</text><text x="320" y="27">Ceiling</text>
-    <text x="58" y="82">Living</text><text x="170" y="82">23.4</text><text x="320" y="82">24.1</text>
-    <text x="58" y="128">Bath</text><text x="170" y="128">26.0</text><text x="320" y="128">25.7</text>
-    <path d="M110 42v128M250 42v128M0 104h440" stroke="#d9e0e7"/>
-  </g>
+  <rect x="88" y="92" width="464" height="186" rx="8" fill="#ffffff" stroke="#d9e0e7" stroke-width="3"/>
+  <rect x="88" y="92" width="464" height="48" rx="8" fill="#e8f0ff" stroke="#2563eb" stroke-width="3"/>
+  <rect x="88" y="92" width="118" height="186" rx="8" fill="#d9f3ef" stroke="#0f766e" stroke-width="3"/>
+  <g stroke="#d9e0e7" stroke-width="2"><path d="M206 92v186M322 92v186M438 92v186M88 186h464M88 232h464"/></g>
+  <g fill="#fff4db" stroke="#a15c00"><circle cx="266" cy="210" r="13"/><circle cx="382" cy="210" r="13"/><circle cx="498" cy="210" r="13"/></g>
 </svg>

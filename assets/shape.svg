@@ -1,21 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="shape ndim size">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Схема формы массива">
   <rect width="640" height="360" fill="#f9fbfc"/>
-  <text x="40" y="48" font-family="Arial" font-size="24" font-weight="700" fill="#17202a">shape, ndim, size</text>
-  <g transform="translate(60 86)" stroke="#0f766e" fill="#d9f3ef">
-    <rect width="88" height="64" rx="6"/>
-    <rect x="96" width="88" height="64" rx="6"/>
-    <rect x="192" width="88" height="64" rx="6"/>
-    <rect y="72" width="88" height="64" rx="6"/>
-    <rect x="96" y="72" width="88" height="64" rx="6"/>
-    <rect x="192" y="72" width="88" height="64" rx="6"/>
+  <g transform="translate(86 86)" stroke="#0f766e" fill="#d9f3ef" stroke-width="3">
+    <rect width="88" height="64" rx="6"/><rect x="98" width="88" height="64" rx="6"/><rect x="196" width="88" height="64" rx="6"/>
+    <rect y="74" width="88" height="64" rx="6"/><rect x="98" y="74" width="88" height="64" rx="6"/><rect x="196" y="74" width="88" height="64" rx="6"/>
   </g>
-  <text x="82" y="264" font-family="Consolas" font-size="22" fill="#17202a">shape = (2, 3)</text>
-  <text x="82" y="296" font-family="Consolas" font-size="22" fill="#17202a">ndim = 2</text>
-  <text x="82" y="328" font-family="Consolas" font-size="22" fill="#17202a">size = 6</text>
-  <path d="M420 100v136" stroke="#2563eb" stroke-width="3"/>
-  <path d="M404 116l16-16 16 16M404 220l16 16 16-16" fill="none" stroke="#2563eb" stroke-width="3"/>
-  <text x="448" y="176" font-family="Arial" font-size="18" fill="#365267">2 строки</text>
-  <path d="M94 238h236" stroke="#a15c00" stroke-width="3"/>
-  <path d="M110 222l-16 16 16 16M314 222l16 16-16 16" fill="none" stroke="#a15c00" stroke-width="3"/>
-  <text x="176" y="230" font-family="Arial" font-size="18" fill="#365267">3 столбца</text>
+  <g stroke="#2563eb" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M430 92v134"/><path d="M414 108l16-18 16 18M414 210l16 18 16-18"/>
+  </g>
+  <g stroke="#a15c00" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M102 264h252"/><path d="M120 248l-18 16 18 16M336 248l18 16-18 16"/>
+  </g>
 </svg>
