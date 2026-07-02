@@ -478,7 +478,9 @@ const copy = {
     resultTicket: "Результат билета",
     resultFinal: "Результат полного теста",
     cumulative: "Накопленный результат",
-    newTicket: "Новый билет"
+    newTicket: "Новый билет",
+    defense: "Защита проекта",
+    openDefense: "Открыть тренажер"
   },
   en: {
     subtitle: "NumPy, Pandas, data analysis",
@@ -503,7 +505,9 @@ const copy = {
     resultTicket: "Ticket result",
     resultFinal: "Full test result",
     cumulative: "Cumulative result",
-    newTicket: "New ticket"
+    newTicket: "New ticket",
+    defense: "Project defense",
+    openDefense: "Open trainer"
   }
 };
 const app = document.getElementById("app");
@@ -663,6 +667,10 @@ function renderHome() {
       <article class="mode-card">
         <h2>${t("final")}</h2>
         <button class="${unlocked ? "primary-btn" : "ghost-btn"}" type="button" ${unlocked ? "" : "disabled"} onclick="startFinalTest()">${t("startFinal")}</button>
+      </article>
+      <article class="mode-card">
+        <h2>${t("defense")}</h2>
+        <button class="ghost-btn" type="button" onclick="location.href='./defense/'">${t("openDefense")}</button>
       </article>
     </section>
     <div class="actions single">
