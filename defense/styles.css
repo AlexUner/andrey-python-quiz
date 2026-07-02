@@ -344,6 +344,13 @@ button {
   font-size: 12px;
 }
 
+.prompt {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
 .visual {
   width: 100%;
   aspect-ratio: 16 / 9;

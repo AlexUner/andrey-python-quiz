@@ -13,8 +13,12 @@ const copy = {
     total: "всего",
     answers: "ответов",
     ticket: "Билет",
+    reverse: "Реверс",
+    oral: "Устно",
     final: "Полный тест",
     startTicket: "Начать билет",
+    startReverse: "Начать реверс",
+    startOral: "Начать устно",
     startFinal: "Начать полный тест",
     reset: "Сбросить прогресс",
     question: "Вопрос",
@@ -31,7 +35,12 @@ const copy = {
     topics: "Темы",
     answer: "Ответ",
     back: "Назад",
-    locked: "Откроется после всех карточек"
+    locked: "Откроется после всех карточек",
+    reversePrompt: "Подберите вопрос или термин к ответу:",
+    showAnswer: "Показать ответ",
+    knew: "Знал",
+    repeat: "Повторить",
+    oralPrompt: "Ответьте вслух, затем откройте эталон."
   },
   en: {
     title: "ML Project Defense",
@@ -41,8 +50,12 @@ const copy = {
     total: "total",
     answers: "answers",
     ticket: "Ticket",
+    reverse: "Reverse",
+    oral: "Oral",
     final: "Full test",
     startTicket: "Start ticket",
+    startReverse: "Start reverse",
+    startOral: "Start oral",
     startFinal: "Start full test",
     reset: "Reset progress",
     question: "Question",
@@ -59,7 +72,12 @@ const copy = {
     topics: "Topics",
     answer: "Answer",
     back: "Back",
-    locked: "Unlocks after all cards"
+    locked: "Unlocks after all cards",
+    reversePrompt: "Choose the matching question or term for this answer:",
+    showAnswer: "Show answer",
+    knew: "Knew it",
+    repeat: "Repeat",
+    oralPrompt: "Answer out loud first, then open the model answer."
   }
 };
 
@@ -125,10 +143,22 @@ function buildTicket() {
 }
 
 function startTicket() {
+  startMode("ticket", buildTicket());
+}
+
+function startReverse() {
+  startMode("reverse", buildTicket());
+}
+
+function startOral() {
+  startMode("oral", buildTicket());
+}
+
+function startMode(mode, deck) {
   state = {
     screen: "quiz",
-    mode: "ticket",
-    deck: buildTicket(),
+    mode,
+    deck,
     index: 0,
     answered: {}
   };
@@ -200,6 +230,14 @@ function renderHome() {
         <button class="primary-btn" type="button" onclick="startTicket()">${t("startTicket")}</button>
       </article>
       <article class="mode-card">
+        <h2>${t("reverse")}</h2>
+        <button class="primary-btn" type="button" onclick="startReverse()">${t("startReverse")}</button>
+      </article>
+      <article class="mode-card">
+        <h2>${t("oral")}</h2>
+        <button class="ghost-btn" type="button" onclick="startOral()">${t("startOral")}</button>
+      </article>
+      <article class="mode-card">
         <h2>${t("final")}</h2>
         <p>${unlocked ? "" : t("locked")}</p>
         <button class="${unlocked ? "primary-btn" : "ghost-btn"}" type="button" ${unlocked ? "" : "disabled"} onclick="startFinalTest()">${t("startFinal")}</button>
@@ -246,8 +284,12 @@ function renderQuiz() {
   const answered = state.answered[card.id];
   const current = state.index + 1;
   const pct = Math.round((state.index / state.deck.length) * 100);
+  if (state.mode === "oral") {
+    renderOralQuiz(card, answered, current, pct);
+    return;
+  }
   app.innerHTML = `
-    ${topbar(state.mode === "final" ? t("final") : t("ticket"))}
+    ${topbar(modeTitle())}
     <section class="toolbar">
       <div class="progress-wrap">
         <div class="progress-line"><div class="progress-fill" style="width:${pct}%"></div></div>
@@ -259,7 +301,8 @@ function renderQuiz() {
       <img class="visual" src="${card.visual}" alt="">
       <div class="study-main">
         <div class="tag-row"><span class="tag">${escapeHtml(card.topic)}</span><span class="tag">${t("subtitle")}</span></div>
-        <h2 class="question">${escapeHtml(local(card.question))}</h2>
+        ${state.mode === "reverse" ? `<p class="prompt">${t("reversePrompt")}</p>` : ""}
+        <h2 class="question">${formatInline(questionText(card))}</h2>
         <div class="answer-list">
           ${getChoices(card).map(choice => answerButton(card, choice, answered)).join("")}
         </div>
@@ -273,16 +316,66 @@ function renderQuiz() {
   `;
 }
 
+function modeTitle() {
+  if (state.mode === "final") return t("final");
+  if (state.mode === "reverse") return t("reverse");
+  if (state.mode === "oral") return t("oral");
+  return t("ticket");
+}
+
+function questionText(card) {
+  return state.mode === "reverse" ? local(card.answer) : local(card.question);
+}
+
+function renderOralQuiz(card, answered, current, pct) {
+  app.innerHTML = `
+    ${topbar(t("oral"))}
+    <section class="toolbar">
+      <div class="progress-wrap">
+        <div class="progress-line"><div class="progress-fill" style="width:${pct}%"></div></div>
+        <div class="progress-meta"><span>${t("question")} ${current} ${t("of")} ${state.deck.length}</span><span>${masteredCount()} ${t("of")} ${totalCards}</span></div>
+      </div>
+      <div class="number-grid">${state.deck.map((item, idx) => numberButton(item, idx)).join("")}</div>
+    </section>
+    <article class="study-card">
+      <img class="visual" src="${card.visual}" alt="">
+      <div class="study-main">
+        <div class="tag-row"><span class="tag">${escapeHtml(card.topic)}</span><span class="tag">${t("subtitle")}</span></div>
+        <p class="prompt">${t("oralPrompt")}</p>
+        <h2 class="question">${escapeHtml(local(card.question))}</h2>
+        ${answered ? reveal(card, answered) : ""}
+        <div class="actions ${answered ? "" : "single"}">
+          ${answered ? `<button class="ghost-btn" type="button" onclick="selfGrade(${card.id}, false)">${t("repeat")}</button><button class="primary-btn" type="button" onclick="selfGrade(${card.id}, true)">${t("knew")}</button>` : `<button class="primary-btn" type="button" onclick="showOralAnswer(${card.id})">${t("showAnswer")}</button>`}
+        </div>
+      </div>
+    </article>
+  `;
+}
+
 function getChoices(card) {
+  if (state.mode === "reverse") return getReverseChoices(card);
   if (!card.sessionChoices) {
     card.sessionChoices = shuffle(card.choices.map((choice, index) => ({ ...choice, index })));
   }
   return card.sessionChoices;
 }
 
+function getReverseChoices(card) {
+  if (!card.reverseChoices) {
+    const sameTopic = cards.filter(item => item.id !== card.id && item.topic === card.topic);
+    const otherTopic = cards.filter(item => item.id !== card.id && item.topic !== card.topic);
+    const distractors = shuffle([...sameTopic, ...shuffle(otherTopic)])
+      .filter((item, index, source) => source.findIndex(candidate => local(candidate.question) === local(item.question)) === index)
+      .slice(0, 3)
+      .map((item, index) => ({ ...item.question, index: index + 1 }));
+    card.reverseChoices = shuffle([{ ...card.question, index: 0 }, ...distractors]);
+  }
+  return card.reverseChoices;
+}
+
 function numberButton(item, idx) {
   const answered = state.answered[item.id];
-  const cls = idx === state.index ? "current" : answered ? (answered.correct ? "right" : "wrong") : "";
+  const cls = idx === state.index ? "current" : answered && !answered.pendingSelfGrade ? (answered.correct ? "right" : "wrong") : "";
   return `<button class="num ${cls}" type="button" onclick="jumpTo(${idx})">${idx + 1}</button>`;
 }
 
@@ -296,10 +389,11 @@ function answerButton(card, choice, answered) {
 }
 
 function reveal(card, answered) {
-  const title = answered.correct ? t("right") : t("remember");
+  const title = answered.pendingSelfGrade ? t("answer") : answered.correct ? t("right") : t("remember");
+  const answer = state.mode === "reverse" ? card.question : card.answer;
   return `
     <div class="reveal">
-      <strong>${title}: ${formatInline(local(card.answer))}</strong>
+      <strong>${title}: ${formatInline(local(answer))}</strong>
       <p>${escapeHtml(local(card.explain))}</p>
     </div>
   `;
@@ -317,6 +411,23 @@ function chooseAnswer(id, choiceIndex) {
   }
   saveProgress();
   render();
+}
+
+function showOralAnswer(id) {
+  state.answered[id] = { choiceIndex: null, correct: false, pendingSelfGrade: true };
+  render();
+}
+
+function selfGrade(id, correct) {
+  state.answered[id] = { choiceIndex: null, correct };
+  progress.attempts = (progress.attempts || 0) + 1;
+  if (correct) {
+    progress.mastered[id] = true;
+  } else {
+    delete progress.mastered[id];
+  }
+  saveProgress();
+  nextQuestion();
 }
 
 function nextQuestion() {

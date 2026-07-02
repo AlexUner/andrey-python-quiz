@@ -2518,5 +2518,845 @@ const cards = [
       ru: "Финальная фраза должна связывать pipeline, EDA, metrics и результат.",
       en: "The final sentence should connect the pipeline, EDA, metrics, and result."
     }
+  },
+  {
+    id: 73,
+    topic: "Validation",
+    visual: "assets/validation.svg",
+    question: {
+      ru: "Чем validation set отличается от test set?",
+      en: "How is a validation set different from a test set?"
+    },
+    answer: {
+      ru: "Validation set используют для выбора модели и tuning, а test set - для финальной независимой оценки.",
+      en: "A validation set is used for model selection and tuning, while a test set is for final independent evaluation."
+    },
+    choices: [
+      {
+        ru: "Validation set используют для выбора модели и tuning, а test set - для финальной независимой оценки.",
+        en: "A validation set is used for model selection and tuning, while a test set is for final independent evaluation."
+      },
+      {
+        ru: "Validation set всегда содержит target, а test set никогда.",
+        en: "A validation set always has a target, while a test set never does."
+      },
+      {
+        ru: "Validation set нужен только для EDA-графиков.",
+        en: "A validation set is needed only for EDA plots."
+      },
+      {
+        ru: "Validation set и test set всегда одно и то же.",
+        en: "A validation set and a test set are always the same thing."
+      }
+    ],
+    explain: {
+      ru: "Если использовать test set для выбора гиперпараметров, финальная оценка становится менее честной.",
+      en: "If the test set is used to choose hyperparameters, the final estimate becomes less honest."
+    }
+  },
+  {
+    id: 74,
+    topic: "Validation",
+    visual: "assets/validation.svg",
+    question: {
+      ru: "Что такое hyperparameter?",
+      en: "What is a hyperparameter?"
+    },
+    answer: {
+      ru: "Настройка, которую задают до обучения модели: `k`, `max_depth`, `n_estimators`, `C`.",
+      en: "A setting chosen before training: `k`, `max_depth`, `n_estimators`, `C`."
+    },
+    choices: [
+      {
+        ru: "Настройка, которую задают до обучения модели: `k`, `max_depth`, `n_estimators`, `C`.",
+        en: "A setting chosen before training: `k`, `max_depth`, `n_estimators`, `C`."
+      },
+      {
+        ru: "Любой target label после предсказания.",
+        en: "Any target label after prediction."
+      },
+      {
+        ru: "Строка в confusion matrix.",
+        en: "A row in the confusion matrix."
+      },
+      {
+        ru: "Пропущенное значение в dataset.",
+        en: "A missing value in the dataset."
+      }
+    ],
+    explain: {
+      ru: "Модель учит parameters из данных, а hyperparameters выбирает человек или поиск.",
+      en: "The model learns parameters from data, while hyperparameters are chosen by a person or search procedure."
+    }
+  },
+  {
+    id: 75,
+    topic: "Validation",
+    visual: "assets/validation.svg",
+    question: {
+      ru: "Что делает GridSearchCV?",
+      en: "What does GridSearchCV do?"
+    },
+    answer: {
+      ru: "Перебирает сетку hyperparameters и оценивает варианты через cross-validation.",
+      en: "It searches over a grid of hyperparameters and evaluates options with cross-validation."
+    },
+    choices: [
+      {
+        ru: "Перебирает сетку hyperparameters и оценивает варианты через cross-validation.",
+        en: "It searches over a grid of hyperparameters and evaluates options with cross-validation."
+      },
+      {
+        ru: "Автоматически удаляет target variable.",
+        en: "It automatically removes the target variable."
+      },
+      {
+        ru: "Строит только scatter plot.",
+        en: "It only builds a scatter plot."
+      },
+      {
+        ru: "Заменяет все модели одним imputer.",
+        en: "It replaces all models with one imputer."
+      }
+    ],
+    explain: {
+      ru: "Для проекта можно было бы подобрать `n_neighbors`, `max_depth` или `C` более системно.",
+      en: "For the project, it could tune `n_neighbors`, `max_depth`, or `C` more systematically."
+    }
+  },
+  {
+    id: 76,
+    topic: "Course",
+    visual: "assets/course.svg",
+    question: {
+      ru: "Что такое regularization?",
+      en: "What is regularization?"
+    },
+    answer: {
+      ru: "Ограничение сложности модели, чтобы снизить overfitting.",
+      en: "A way to limit model complexity to reduce overfitting."
+    },
+    choices: [
+      {
+        ru: "Ограничение сложности модели, чтобы снизить overfitting.",
+        en: "A way to limit model complexity to reduce overfitting."
+      },
+      {
+        ru: "Метод создания synthetic minority examples.",
+        en: "A method for creating synthetic minority examples."
+      },
+      {
+        ru: "Только подсчет class balance.",
+        en: "Only counting class balance."
+      },
+      {
+        ru: "Только сортировка строк.",
+        en: "Only sorting rows."
+      }
+    ],
+    explain: {
+      ru: "В Logistic Regression regularization управляется параметром `C`: меньше `C` - сильнее regularization.",
+      en: "In Logistic Regression, regularization is controlled by `C`: smaller `C` means stronger regularization."
+    }
+  },
+  {
+    id: 77,
+    topic: "Course",
+    visual: "assets/course.svg",
+    question: {
+      ru: "Что такое L1 и L2 regularization на базовом уровне?",
+      en: "What are L1 and L2 regularization at a basic level?"
+    },
+    answer: {
+      ru: "Это penalties на веса модели; L1 может занулять признаки, L2 обычно сглаживает веса.",
+      en: "They are penalties on model weights; L1 can zero out features, while L2 usually shrinks weights smoothly."
+    },
+    choices: [
+      {
+        ru: "Это penalties на веса модели; L1 может занулять признаки, L2 обычно сглаживает веса.",
+        en: "They are penalties on model weights; L1 can zero out features, while L2 usually shrinks weights smoothly."
+      },
+      {
+        ru: "Это два вида target variable.",
+        en: "They are two types of target variables."
+      },
+      {
+        ru: "Это названия островов в Palmer Penguins.",
+        en: "They are island names in Palmer Penguins."
+      },
+      {
+        ru: "Это две метрики confusion matrix.",
+        en: "They are two confusion-matrix metrics."
+      }
+    ],
+    explain: {
+      ru: "Если преподаватель спросит глубже, достаточно связать regularization с control of complexity.",
+      en: "If the teacher asks deeper, connect regularization with control of complexity."
+    }
+  },
+  {
+    id: 78,
+    topic: "Metrics",
+    visual: "assets/metrics.svg",
+    question: {
+      ru: "Что такое ROC-AUC?",
+      en: "What is ROC-AUC?"
+    },
+    answer: {
+      ru: "Метрика качества ранжирования по вероятностям, чаще для binary classification.",
+      en: "A probability-ranking quality metric, most commonly for binary classification."
+    },
+    choices: [
+      {
+        ru: "Метрика качества ранжирования по вероятностям, чаще для binary classification.",
+        en: "A probability-ranking quality metric, most commonly for binary classification."
+      },
+      {
+        ru: "Метод заполнения пропусков медианой.",
+        en: "A method for median imputation."
+      },
+      {
+        ru: "Алгоритм one-hot encoding.",
+        en: "A one-hot encoding algorithm."
+      },
+      {
+        ru: "Тип train-test split без target.",
+        en: "A type of train-test split without a target."
+      }
+    ],
+    explain: {
+      ru: "Для multi-class ROC-AUC возможен, но на защите проекта достаточно уверенно знать accuracy, F1 и confusion matrix.",
+      en: "Multi-class ROC-AUC exists, but for this project defense, accuracy, F1, and confusion matrix are more central."
+    }
+  },
+  {
+    id: 79,
+    topic: "Metrics",
+    visual: "assets/metrics.svg",
+    question: {
+      ru: "Что такое probability threshold?",
+      en: "What is a probability threshold?"
+    },
+    answer: {
+      ru: "Порог вероятности, после которого модель относит объект к классу.",
+      en: "A probability cutoff used to assign an observation to a class."
+    },
+    choices: [
+      {
+        ru: "Порог вероятности, после которого модель относит объект к классу.",
+        en: "A probability cutoff used to assign an observation to a class."
+      },
+      {
+        ru: "Количество folds в cross-validation.",
+        en: "The number of folds in cross-validation."
+      },
+      {
+        ru: "Количество строк после imputation.",
+        en: "The number of rows after imputation."
+      },
+      {
+        ru: "Название меньшего класса.",
+        en: "The name of the minority class."
+      }
+    ],
+    explain: {
+      ru: "В multi-class обычно выбирается класс с максимальной вероятностью; в binary threshold часто равен 0.5.",
+      en: "In multi-class classification, the class with the highest probability is usually selected; in binary classification, the threshold is often 0.5."
+    }
+  },
+  {
+    id: 80,
+    topic: "Metrics",
+    visual: "assets/metrics.svg",
+    question: {
+      ru: "Чем macro average отличается от weighted average?",
+      en: "How is macro average different from weighted average?"
+    },
+    answer: {
+      ru: "Macro считает классы одинаково, weighted учитывает размер каждого класса.",
+      en: "Macro treats classes equally, while weighted accounts for each class size."
+    },
+    choices: [
+      {
+        ru: "Macro считает классы одинаково, weighted учитывает размер каждого класса.",
+        en: "Macro treats classes equally, while weighted accounts for each class size."
+      },
+      {
+        ru: "Macro используется только для regression, weighted только для EDA.",
+        en: "Macro is only for regression, while weighted is only for EDA."
+      },
+      {
+        ru: "Macro удаляет minority class.",
+        en: "Macro removes the minority class."
+      },
+      {
+        ru: "Weighted всегда равен нулю.",
+        en: "Weighted is always zero."
+      }
+    ],
+    explain: {
+      ru: "При imbalance macro сильнее показывает проблемы minority classes.",
+      en: "With imbalance, macro more clearly exposes minority-class problems."
+    }
+  },
+  {
+    id: 81,
+    topic: "Metrics",
+    visual: "assets/metrics.svg",
+    question: {
+      ru: "Что означает support в classification report?",
+      en: "What does support mean in a classification report?"
+    },
+    answer: {
+      ru: "Количество настоящих объектов каждого класса в test set.",
+      en: "The number of true examples of each class in the test set."
+    },
+    choices: [
+      {
+        ru: "Количество настоящих объектов каждого класса в test set.",
+        en: "The number of true examples of each class in the test set."
+      },
+      {
+        ru: "Количество признаков после scaling.",
+        en: "The number of features after scaling."
+      },
+      {
+        ru: "Количество models в ensemble.",
+        en: "The number of models in an ensemble."
+      },
+      {
+        ru: "Размер learning rate.",
+        en: "The learning rate size."
+      }
+    ],
+    explain: {
+      ru: "В notebook support для test set: Adelie 30, Chinstrap 14, Gentoo 25.",
+      en: "In the notebook test set, support is Adelie 30, Chinstrap 14, Gentoo 25."
+    }
+  },
+  {
+    id: 82,
+    topic: "Models",
+    visual: "assets/models.svg",
+    question: {
+      ru: "Что такое model interpretability?",
+      en: "What is model interpretability?"
+    },
+    answer: {
+      ru: "Насколько понятно, почему модель делает такие предсказания.",
+      en: "How understandable it is why a model makes its predictions."
+    },
+    choices: [
+      {
+        ru: "Насколько понятно, почему модель делает такие предсказания.",
+        en: "How understandable it is why a model makes its predictions."
+      },
+      {
+        ru: "Насколько быстро строится pie chart.",
+        en: "How fast a pie chart is built."
+      },
+      {
+        ru: "Сколько строк имеет dataset.",
+        en: "How many rows the dataset has."
+      },
+      {
+        ru: "Сколько NaN было удалено.",
+        en: "How many NaN values were removed."
+      }
+    ],
+    explain: {
+      ru: "Decision Tree обычно проще объяснить, Random Forest сильнее, но менее прозрачен.",
+      en: "A Decision Tree is usually easier to explain; Random Forest can be stronger but less transparent."
+    }
+  },
+  {
+    id: 83,
+    topic: "Models",
+    visual: "assets/models.svg",
+    question: {
+      ru: "Что такое feature importance?",
+      en: "What is feature importance?"
+    },
+    answer: {
+      ru: "Оценка того, какие признаки сильнее помогают модели делать предсказания.",
+      en: "An estimate of which features help the model make predictions the most."
+    },
+    choices: [
+      {
+        ru: "Оценка того, какие признаки сильнее помогают модели делать предсказания.",
+        en: "An estimate of which features help the model make predictions the most."
+      },
+      {
+        ru: "Список target classes без признаков.",
+        en: "A list of target classes without features."
+      },
+      {
+        ru: "Метод удаления train data.",
+        en: "A method for removing train data."
+      },
+      {
+        ru: "Тип imputation.",
+        en: "A type of imputation."
+      }
+    ],
+    explain: {
+      ru: "Для защиты хорошо сказать, что важные признаки должны совпадать с EDA: bill measurements и body size.",
+      en: "For the defense, say that important features should match EDA: bill measurements and body size."
+    }
+  },
+  {
+    id: 84,
+    topic: "Models",
+    visual: "assets/models.svg",
+    question: {
+      ru: "Что такое baseline model?",
+      en: "What is a baseline model?"
+    },
+    answer: {
+      ru: "Простая начальная модель, с которой сравнивают более сложные подходы.",
+      en: "A simple initial model used as a reference for comparing more complex approaches."
+    },
+    choices: [
+      {
+        ru: "Простая начальная модель, с которой сравнивают более сложные подходы.",
+        en: "A simple initial model used as a reference for comparing more complex approaches."
+      },
+      {
+        ru: "Модель, которую нельзя оценивать.",
+        en: "A model that cannot be evaluated."
+      },
+      {
+        ru: "Только финальный график.",
+        en: "Only the final plot."
+      },
+      {
+        ru: "Только автоматический EDA report.",
+        en: "Only an automatic EDA report."
+      }
+    ],
+    explain: {
+      ru: "Logistic Regression может быть хорошим baseline для табличной classification.",
+      en: "Logistic Regression can be a good baseline for tabular classification."
+    }
+  },
+  {
+    id: 85,
+    topic: "Preprocessing",
+    visual: "assets/preprocessing.svg",
+    question: {
+      ru: "Что делает ColumnTransformer?",
+      en: "What does ColumnTransformer do?"
+    },
+    answer: {
+      ru: "Применяет разные preprocessing steps к разным группам столбцов.",
+      en: "It applies different preprocessing steps to different groups of columns."
+    },
+    choices: [
+      {
+        ru: "Применяет разные preprocessing steps к разным группам столбцов.",
+        en: "It applies different preprocessing steps to different groups of columns."
+      },
+      {
+        ru: "Обучает только Random Forest.",
+        en: "It trains only Random Forest."
+      },
+      {
+        ru: "Считает только final accuracy.",
+        en: "It calculates only final accuracy."
+      },
+      {
+        ru: "Создает target variable.",
+        en: "It creates the target variable."
+      }
+    ],
+    explain: {
+      ru: "В проекте числовые признаки проходят imputer+scaler, категориальные - imputer+one-hot.",
+      en: "In the project, numerical features go through imputer+scaler, while categorical features go through imputer+one-hot."
+    }
+  },
+  {
+    id: 86,
+    topic: "Preprocessing",
+    visual: "assets/preprocessing.svg",
+    question: {
+      ru: "Почему preprocessing должен быть внутри cross-validation pipeline?",
+      en: "Why should preprocessing be inside the cross-validation pipeline?"
+    },
+    answer: {
+      ru: "Чтобы imputer/scaler учились только на training fold и не подсматривали validation fold.",
+      en: "So imputer/scaler are fitted only on the training fold and do not see the validation fold."
+    },
+    choices: [
+      {
+        ru: "Чтобы imputer/scaler учились только на training fold и не подсматривали validation fold.",
+        en: "So imputer/scaler are fitted only on the training fold and do not see the validation fold."
+      },
+      {
+        ru: "Чтобы validation fold стал target variable.",
+        en: "So the validation fold becomes the target variable."
+      },
+      {
+        ru: "Чтобы удалить все models.",
+        en: "So all models are removed."
+      },
+      {
+        ru: "Чтобы EDA не выполнялась.",
+        en: "So EDA is not performed."
+      }
+    ],
+    explain: {
+      ru: "Это один из главных способов избежать data leakage.",
+      en: "This is one of the main ways to avoid data leakage."
+    }
+  },
+  {
+    id: 87,
+    topic: "Ensembles",
+    visual: "assets/ensemble.svg",
+    question: {
+      ru: "Чем Gradient Boosting отличается от Random Forest?",
+      en: "How is Gradient Boosting different from Random Forest?"
+    },
+    answer: {
+      ru: "Random Forest строит деревья независимо, а Gradient Boosting строит их последовательно, исправляя ошибки.",
+      en: "Random Forest builds trees independently, while Gradient Boosting builds them sequentially to correct errors."
+    },
+    choices: [
+      {
+        ru: "Random Forest строит деревья независимо, а Gradient Boosting строит их последовательно, исправляя ошибки.",
+        en: "Random Forest builds trees independently, while Gradient Boosting builds them sequentially to correct errors."
+      },
+      {
+        ru: "Random Forest - это scaling, а Gradient Boosting - imputation.",
+        en: "Random Forest is scaling, while Gradient Boosting is imputation."
+      },
+      {
+        ru: "Оба метода не используют trees.",
+        en: "Neither method uses trees."
+      },
+      {
+        ru: "Gradient Boosting всегда unsupervised.",
+        en: "Gradient Boosting is always unsupervised."
+      }
+    ],
+    explain: {
+      ru: "Ключ: bagging/independent voting против boosting/sequential correction.",
+      en: "Key idea: bagging/independent voting versus boosting/sequential correction."
+    }
+  },
+  {
+    id: 88,
+    topic: "Ensembles",
+    visual: "assets/ensemble.svg",
+    question: {
+      ru: "Что такое weak learner в boosting?",
+      en: "What is a weak learner in boosting?"
+    },
+    answer: {
+      ru: "Простая модель, которая чуть лучше случайного угадывания, но в ансамбле становится сильной.",
+      en: "A simple model that is only slightly better than random guessing but becomes strong in an ensemble."
+    },
+    choices: [
+      {
+        ru: "Простая модель, которая чуть лучше случайного угадывания, но в ансамбле становится сильной.",
+        en: "A simple model that is only slightly better than random guessing but becomes strong in an ensemble."
+      },
+      {
+        ru: "Модель без target labels.",
+        en: "A model without target labels."
+      },
+      {
+        ru: "Строка с NaN.",
+        en: "A row with NaN."
+      },
+      {
+        ru: "Любой график EDA.",
+        en: "Any EDA plot."
+      }
+    ],
+    explain: {
+      ru: "Boosting строит strong learner из последовательности weak learners.",
+      en: "Boosting builds a strong learner from a sequence of weak learners."
+    }
+  },
+  {
+    id: 89,
+    topic: "Project",
+    visual: "assets/project.svg",
+    question: {
+      ru: "Какая главная слабость текущего notebook как защиты?",
+      en: "What is the main weakness of the current notebook as a defense?"
+    },
+    answer: {
+      ru: "Мало текстового объяснения решений и нет расширения на ensembles/cross-validation.",
+      en: "It has little textual explanation of decisions and no extension to ensembles/cross-validation."
+    },
+    choices: [
+      {
+        ru: "Мало текстового объяснения решений и нет расширения на ensembles/cross-validation.",
+        en: "It has little textual explanation of decisions and no extension to ensembles/cross-validation."
+      },
+      {
+        ru: "В нем нет target variable.",
+        en: "It has no target variable."
+      },
+      {
+        ru: "В нем нет EDA вообще.",
+        en: "It has no EDA at all."
+      },
+      {
+        ru: "В нем нет ни одной модели.",
+        en: "It has no models."
+      }
+    ],
+    explain: {
+      ru: "Код рабочий, но защита требует объяснять зачем сделан каждый шаг.",
+      en: "The code works, but the defense requires explaining why each step was done."
+    }
+  },
+  {
+    id: 90,
+    topic: "Project",
+    visual: "assets/project.svg",
+    question: {
+      ru: "Какая минимальная доработка notebook сильнее всего поможет защите?",
+      en: "Which minimal notebook improvement would help the defense the most?"
+    },
+    answer: {
+      ru: "Добавить Random Forest, stratified cross-validation и короткие markdown-объяснения.",
+      en: "Add Random Forest, stratified cross-validation, and short markdown explanations."
+    },
+    choices: [
+      {
+        ru: "Добавить Random Forest, stratified cross-validation и короткие markdown-объяснения.",
+        en: "Add Random Forest, stratified cross-validation, and short markdown explanations."
+      },
+      {
+        ru: "Удалить все графики EDA.",
+        en: "Remove all EDA plots."
+      },
+      {
+        ru: "Обучить модель на test set.",
+        en: "Train the model on the test set."
+      },
+      {
+        ru: "Заменить target на случайные числа.",
+        en: "Replace the target with random numbers."
+      }
+    ],
+    explain: {
+      ru: "Это закрывает конкретный фидбек: course content, ensembles и надежность результата.",
+      en: "This addresses the specific feedback: course content, ensembles, and robustness of the result."
+    }
+  },
+  {
+    id: 91,
+    topic: "Oral defense",
+    visual: "assets/oral.svg",
+    question: {
+      ru: "Что делать, если Андрей не знает точный ответ на защите?",
+      en: "What should Andrey do if he does not know the exact answer in the defense?"
+    },
+    answer: {
+      ru: "Сначала назвать общий принцип, затем связать его с проектом и не выдумывать лишнего.",
+      en: "First state the general principle, then connect it to the project, and do not invent extra details."
+    },
+    choices: [
+      {
+        ru: "Сначала назвать общий принцип, затем связать его с проектом и не выдумывать лишнего.",
+        en: "First state the general principle, then connect it to the project, and do not invent extra details."
+      },
+      {
+        ru: "Спорить, что вопрос не относится к проекту.",
+        en: "Argue that the question is unrelated to the project."
+      },
+      {
+        ru: "Молчать и ждать следующего вопроса.",
+        en: "Stay silent and wait for the next question."
+      },
+      {
+        ru: "Говорить любые термины без связи.",
+        en: "Say random terms without connection."
+      }
+    ],
+    explain: {
+      ru: "Для устного экзамена лучше короткий честный ответ, чем длинная путаница.",
+      en: "For an oral exam, a short honest answer is better than a long confused one."
+    }
+  },
+  {
+    id: 92,
+    topic: "Oral defense",
+    visual: "assets/oral.svg",
+    question: {
+      ru: "Какая структура ответа самая безопасная?",
+      en: "What answer structure is the safest?"
+    },
+    answer: {
+      ru: "Definition -> role in ML -> how I used it in my project.",
+      en: "Definition -> role in ML -> how I used it in my project."
+    },
+    choices: [
+      {
+        ru: "Definition -> role in ML -> how I used it in my project.",
+        en: "Definition -> role in ML -> how I used it in my project."
+      },
+      {
+        ru: "Only code -> no explanation -> next slide.",
+        en: "Only code -> no explanation -> next slide."
+      },
+      {
+        ru: "Only opinion -> no project connection.",
+        en: "Only opinion -> no project connection."
+      },
+      {
+        ru: "Only dataset name -> no ML term.",
+        en: "Only dataset name -> no ML term."
+      }
+    ],
+    explain: {
+      ru: "Например: EDA definition -> why it matters -> scatter/boxplots in penguins.",
+      en: "For example: EDA definition -> why it matters -> scatter/boxplots in penguins."
+    }
+  },
+  {
+    id: 93,
+    topic: "Oral defense",
+    visual: "assets/oral.svg",
+    question: {
+      ru: "Как ответить на вопрос: `Why did you use a Pipeline?`",
+      en: "How should Andrey answer: `Why did you use a Pipeline?`"
+    },
+    answer: {
+      ru: "It keeps preprocessing and modeling together, makes the workflow reproducible, and helps avoid data leakage.",
+      en: "It keeps preprocessing and modeling together, makes the workflow reproducible, and helps avoid data leakage."
+    },
+    choices: [
+      {
+        ru: "It keeps preprocessing and modeling together, makes the workflow reproducible, and helps avoid data leakage.",
+        en: "It keeps preprocessing and modeling together, makes the workflow reproducible, and helps avoid data leakage."
+      },
+      {
+        ru: "It replaces all evaluation metrics.",
+        en: "It replaces all evaluation metrics."
+      },
+      {
+        ru: "It makes the target unknown.",
+        en: "It makes the target unknown."
+      },
+      {
+        ru: "It is only for plotting.",
+        en: "It is only for plotting."
+      }
+    ],
+    explain: {
+      ru: "Это сильный ответ, потому что связывает код и ML quality.",
+      en: "This is a strong answer because it connects code with ML quality."
+    }
+  },
+  {
+    id: 94,
+    topic: "Oral defense",
+    visual: "assets/oral.svg",
+    question: {
+      ru: "Как ответить на вопрос: `What did EDA show about the data?`",
+      en: "How should Andrey answer: `What did EDA show about the data?`"
+    },
+    answer: {
+      ru: "It showed missing values, class imbalance, and visible species separation by bill and body-size features.",
+      en: "It showed missing values, class imbalance, and visible species separation by bill and body-size features."
+    },
+    choices: [
+      {
+        ru: "It showed missing values, class imbalance, and visible species separation by bill and body-size features.",
+        en: "It showed missing values, class imbalance, and visible species separation by bill and body-size features."
+      },
+      {
+        ru: "It showed that labels were unknown.",
+        en: "It showed that labels were unknown."
+      },
+      {
+        ru: "It showed that no preprocessing was needed.",
+        en: "It showed that no preprocessing was needed."
+      },
+      {
+        ru: "It showed that all classes were exactly equal.",
+        en: "It showed that all classes were exactly equal."
+      }
+    ],
+    explain: {
+      ru: "Это ответ на слабое место, которое прямо указал преподаватель.",
+      en: "This answers the weak point explicitly mentioned by the teacher."
+    }
+  },
+  {
+    id: 95,
+    topic: "Oral defense",
+    visual: "assets/oral.svg",
+    question: {
+      ru: "Как ответить на вопрос: `What are ensemble methods? Give one example from your project context.`",
+      en: "How should Andrey answer: `What are ensemble methods? Give one example from your project context.`"
+    },
+    answer: {
+      ru: "They combine multiple models. In my context, Random Forest would combine many decision trees to classify penguin species by majority vote.",
+      en: "They combine multiple models. In my context, Random Forest would combine many decision trees to classify penguin species by majority vote."
+    },
+    choices: [
+      {
+        ru: "They combine multiple models. In my context, Random Forest would combine many decision trees to classify penguin species by majority vote.",
+        en: "They combine multiple models. In my context, Random Forest would combine many decision trees to classify penguin species by majority vote."
+      },
+      {
+        ru: "They remove missing values. In my context, they replace SimpleImputer.",
+        en: "They remove missing values. In my context, they replace SimpleImputer."
+      },
+      {
+        ru: "They are only charts. In my context, they replace boxplots.",
+        en: "They are only charts. In my context, they replace boxplots."
+      },
+      {
+        ru: "They are unsupervised only. In my context, they ignore species labels.",
+        en: "They are unsupervised only. In my context, they ignore species labels."
+      }
+    ],
+    explain: {
+      ru: "Ответ одновременно дает definition, example и связь с проектом.",
+      en: "The answer gives definition, example, and project connection at the same time."
+    }
+  },
+  {
+    id: 96,
+    topic: "Oral defense",
+    visual: "assets/oral.svg",
+    question: {
+      ru: "Как ответить на вопрос: `Why should I pass you this time?`",
+      en: "How should Andrey answer: `Why should I pass you this time?`"
+    },
+    answer: {
+      ru: "I reviewed the weak points, can explain EDA and ensemble methods clearly, and can connect course theory to my project.",
+      en: "I reviewed the weak points, can explain EDA and ensemble methods clearly, and can connect course theory to my project."
+    },
+    choices: [
+      {
+        ru: "I reviewed the weak points, can explain EDA and ensemble methods clearly, and can connect course theory to my project.",
+        en: "I reviewed the weak points, can explain EDA and ensemble methods clearly, and can connect course theory to my project."
+      },
+      {
+        ru: "Because the previous questions were not important.",
+        en: "Because the previous questions were not important."
+      },
+      {
+        ru: "Because I only memorized code cells.",
+        en: "Because I only memorized code cells."
+      },
+      {
+        ru: "Because the dataset is famous.",
+        en: "Because the dataset is famous."
+      }
+    ],
+    explain: {
+      ru: "Тон должен быть спокойным: признать прошлую проблему и показать готовность.",
+      en: "The tone should be calm: acknowledge the previous issue and show readiness."
+    }
   }
 ];
