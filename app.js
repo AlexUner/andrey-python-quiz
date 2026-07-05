@@ -482,7 +482,9 @@ const copy = {
     defense: "Защита проекта",
     openDefense: "Открыть тренажер",
     lecture2: "Лекция 2",
-    openLecture2: "Открыть"
+    lecture3: "Лекция 3",
+    openLecture2: "Открыть",
+    openLecture3: "Открыть"
   },
   en: {
     subtitle: "NumPy, Pandas, data analysis",
@@ -511,7 +513,9 @@ const copy = {
     defense: "Project defense",
     openDefense: "Open trainer",
     lecture2: "Lecture 2",
-    openLecture2: "Open"
+    lecture3: "Lecture 3",
+    openLecture2: "Open",
+    openLecture3: "Open"
   }
 };
 const app = document.getElementById("app");
@@ -679,6 +683,10 @@ function renderHome() {
       <article class="mode-card">
         <h2>${t("lecture2")}</h2>
         <button class="ghost-btn" type="button" onclick="location.href='./lecture02/'">${t("openLecture2")}</button>
+      </article>
+      <article class="mode-card">
+        <h2>${t("lecture3")}</h2>
+        <button class="ghost-btn" type="button" onclick="location.href='./lecture03/'">${t("openLecture3")}</button>
       </article>
     </section>
     <div class="actions single">
