@@ -1092,3 +1092,395 @@ const cards = [
     "Эта функция реализует тест независимости для таблицы сопряженности.",
     "This function implements the independence test for a contingency table.")
 ];
+
+const balancedDistractors = {
+  1: [
+    ["Они нужны в основном для EDA и визуализации, но почти не помогают делать выводы по неопределенным данным.", "They are mainly needed for EDA and visualization, but do not help much with uncertain data."],
+    ["Они используются только после обучения модели, когда нужно оформить итоговый отчет и сравнить графики.", "They are used only after model training, when preparing the final report and comparing plots."],
+    ["Они важны только для больших датасетов, а для малых выборок статистические выводы почти не применяются.", "They matter only for large datasets; for small samples statistical conclusions are rarely used."]
+  ],
+  2: [
+    ["Набор исходов, которые считаются успешными в конкретной проверяемой гипотезе.", "The set of outcomes treated as successful in a specific tested hypothesis."],
+    ["Множество событий, которым уже назначены вероятности после эксперимента.", "The set of events that already have probabilities assigned after the experiment."],
+    ["Числовая функция, которая переводит каждый исход в измеряемое значение.", "A numeric function that maps each outcome to a measured value."]
+  ],
+  3: [
+    ["Множество всех элементарных исходов, которые физически могут случиться.", "The set of all elementary outcomes that can physically occur."],
+    ["Набор числовых значений, которые принимает случайная величина после измерения.", "The set of numeric values taken by a random variable after measurement."],
+    ["Таблица частот, построенная по наблюдениям уже после сбора данных.", "A frequency table built from observations after data collection."]
+  ],
+  4: [
+    ["P(A) может быть больше 1, если событие встречается чаще среднего в выборке.", "P(A) can exceed 1 if the event occurs more often than average in a sample."],
+    ["P(Omega) выбирают по данным, а сумма непересекающихся событий может быть любой.", "P(Omega) is chosen from data, and disjoint event sums can be arbitrary."],
+    ["Вероятность задается только для одиночных исходов, но не для объединений событий.", "Probability is defined only for single outcomes, not for unions of events."]
+  ],
+  5: [
+    ["Считают долю исходов события среди всех исходов, но затем нормируют ее на среднее.", "Count the event outcomes among all outcomes, then normalize by the mean."],
+    ["Берут число всех исходов и делят его на число исходов, которые не входят в событие.", "Take the total outcomes and divide by outcomes that are not in the event."],
+    ["Сначала оценивают дисперсию исходов, затем используют ее как вероятность события.", "First estimate outcome variance, then use it as the event probability."]
+  ],
+  6: [
+    ["Все исходы, которые входят в A и одновременно принадлежат другому событию B.", "All outcomes that are in A and also belong to another event B."],
+    ["Событие, которое содержит A и все исходы с большей вероятностью, чем у A.", "An event containing A and all outcomes with higher probability than A."],
+    ["Часть события A, которая остается после удаления наиболее редких исходов.", "The part of event A left after removing the rarest outcomes."]
+  ],
+  7: [
+    ["Исходы, которые принадлежат A или B, но не обязательно обоим одновременно.", "Outcomes that belong to A or B, not necessarily both at the same time."],
+    ["Все исходы пространства выборки, кроме тех, которые входят в A или B.", "All sample-space outcomes except those belonging to A or B."],
+    ["Событие, которое получается сложением вероятностей A и B без учета пересечения.", "An event obtained by adding probabilities of A and B without considering overlap."]
+  ],
+  8: [
+    ["Только те исходы, которые находятся одновременно в A и B.", "Only outcomes that are simultaneously in A and B."],
+    ["Все исходы пространства выборки, которые не принадлежат ни A, ни B.", "All sample-space outcomes that belong to neither A nor B."],
+    ["Событие, полученное как разность вероятностей P(A) и P(B).", "An event obtained as the difference between P(A) and P(B)."]
+  ],
+  9: [
+    ["Потому что пересечение не относится ни к A, ни к B и должно быть исключено.", "Because the intersection belongs to neither A nor B and must be excluded."],
+    ["Потому что пересечение всегда имеет вероятность 1 при любых двух событиях.", "Because the intersection always has probability 1 for any two events."],
+    ["Потому что объединение событий допускает только взаимоисключающие исходы.", "Because event union allows only mutually exclusive outcomes."]
+  ],
+  10: [
+    ["Когда вероятность одного события равна вероятности другого события.", "When the probability of one event equals the probability of another event."],
+    ["Когда одно событие полностью содержит другое событие внутри себя.", "When one event fully contains the other event inside it."],
+    ["Когда знание одного события не меняет вероятность другого события.", "When knowing one event does not change the probability of the other."]
+  ],
+  11: [
+    ["Вероятность события B при условии, что событие A уже произошло.", "The probability of event B given that event A has already occurred."],
+    ["Вероятность того, что A и B не могут произойти в одном эксперименте.", "The probability that A and B cannot occur in the same experiment."],
+    ["Вероятность события A без учета любой информации о событии B.", "The probability of event A without using any information about event B."]
+  ],
+  12: [
+    ["Когда A и B имеют пустое пересечение и не могут случиться одновременно.", "When A and B have an empty intersection and cannot occur together."],
+    ["Когда P(A | B) больше P(A), потому что B усиливает вероятность A.", "When P(A | B) is greater than P(A), because B increases A's probability."],
+    ["Когда оба события имеют одинаковую вероятность, но могут зависеть друг от друга.", "When both events have equal probability but may still depend on each other."]
+  ],
+  13: [
+    ["Она вычисляет вероятность события без учета предварительных знаний о гипотезе.", "It computes event probability without using prior knowledge about the hypothesis."],
+    ["Она проверяет, являются ли две выборки независимыми по их средним значениям.", "It tests whether two samples are independent by their means."],
+    ["Она заменяет условную вероятность обычной частотой события в выборке.", "It replaces conditional probability with the ordinary event frequency in a sample."]
+  ],
+  14: [
+    ["Итоговая вероятность гипотезы после учета наблюдения и правдоподобия.", "The final probability of a hypothesis after evidence and likelihood are considered."],
+    ["Вероятность наблюдать данные при условии, что выбранная гипотеза верна.", "The probability of observing the data assuming the chosen hypothesis is true."],
+    ["Нормировочная вероятность наблюдения, общая для всех сравниваемых гипотез.", "The normalizing probability of the evidence, shared by all compared hypotheses."]
+  ],
+  15: [
+    ["Исходная вероятность гипотезы до учета конкретного наблюдения.", "The initial probability of a hypothesis before a specific observation is used."],
+    ["Итоговая вероятность гипотезы после умножения prior на evidence.", "The final probability of a hypothesis after multiplying prior by evidence."],
+    ["Вероятность всех возможных наблюдений независимо от выбранной гипотезы.", "The probability of all possible observations independent of the chosen hypothesis."]
+  ],
+  16: [
+    ["Потому что likelihood всегда полностью заменяет prior в формуле Байеса.", "Because likelihood always fully replaces the prior in Bayes' formula."],
+    ["Потому что базовые вероятности нужны только при равных likelihood.", "Because base rates are needed only when likelihoods are equal."],
+    ["Потому что posterior зависит только от описания наблюдения, а не от частот классов.", "Because posterior depends only on the observation description, not on class frequencies."]
+  ],
+  17: [
+    ["Множество всех возможных исходов эксперимента до назначения вероятностей.", "The set of all possible experiment outcomes before probabilities are assigned."],
+    ["Таблица, где каждому значению уже сопоставлена его выборочная частота.", "A table where each value already has its sample frequency assigned."],
+    ["Параметр распределения, который задает только его среднее значение.", "A distribution parameter that defines only its expected value."]
+  ],
+  18: [
+    ["Дискретная задается PDF, а непрерывная всегда задается только PMF.", "A discrete variable is defined by a PDF, while a continuous one uses only a PMF."],
+    ["Дискретная может принимать любые вещественные значения на интервале.", "A discrete variable can take any real value over an interval."],
+    ["Непрерывная принимает конечный список значений, а дискретная - интервалы.", "A continuous variable takes a finite value list, while a discrete one uses intervals."]
+  ],
+  19: [
+    ["Потому что непрерывная величина не может быть измерена численно в эксперименте.", "Because a continuous variable cannot be measured numerically in an experiment."],
+    ["Потому что PDF в каждой отдельной точке всегда обязана быть равной нулю.", "Because the PDF at every individual point must always equal zero."],
+    ["Потому что CDF запрещает вычислять вероятность на интервалах значений.", "Because the CDF forbids computing probabilities over value intervals."]
+  ],
+  20: [
+    ["Накопленную вероятность того, что непрерывная величина не превосходит x.", "The cumulative probability that a continuous variable does not exceed x."],
+    ["Плотность вероятности непрерывной величины в окрестности значения x.", "The probability density of a continuous variable around value x."],
+    ["Связь между двумя случайными величинами через их совместную таблицу.", "The relationship between two random variables through their joint table."]
+  ],
+  21: [
+    ["Вероятность конкретного значения дискретной случайной величины.", "The probability of a specific value of a discrete random variable."],
+    ["Плотность вероятности в точке для непрерывной случайной величины.", "The probability density at a point for a continuous random variable."],
+    ["Разность между третьим и первым квартилем в выборке.", "The difference between the third and first quartiles in a sample."]
+  ],
+  22: [
+    ["Накопленную вероятность P(X <= x) для дискретных и непрерывных величин.", "The cumulative probability P(X <= x) for discrete and continuous variables."],
+    ["Вероятность ровно одного значения непрерывной величины как массу.", "The probability of exactly one continuous value as a mass."],
+    ["Таблицу наблюдаемых частот для двух категориальных переменных.", "The observed-frequency table for two categorical variables."]
+  ],
+  23: [
+    ["Самое частое значение выборки, выбранное без учета вероятностей исходов.", "The most frequent sample value chosen without considering outcome probabilities."],
+    ["Значение, которое делит упорядоченные наблюдения на две равные части.", "The value that splits ordered observations into two equal parts."],
+    ["Разброс случайной величины относительно среднего значения.", "The spread of a random variable around its mean."]
+  ],
+  24: [
+    ["Средний уровень случайной величины с учетом вероятностей ее значений.", "The average level of a random variable weighted by probabilities."],
+    ["Квадратный корень из стандартного отклонения случайной величины.", "The square root of the random variable's standard deviation."],
+    ["Площадь под плотностью на выбранном интервале значений.", "The area under the density over a chosen interval of values."]
+  ],
+  25: [
+    ["Стандартное отклонение равно дисперсии, деленной на размер выборки.", "Standard deviation equals variance divided by the sample size."],
+    ["Стандартное отклонение равно дисперсии без изменения единиц измерения.", "Standard deviation equals variance without changing measurement units."],
+    ["Стандартное отклонение равно квадрату дисперсии распределения.", "Standard deviation equals the square of the distribution variance."]
+  ],
+  26: [
+    ["Для непрерывного времени ожидания между независимыми событиями.", "For continuous waiting time between independent events."],
+    ["Для значений, равновероятных на заданном числовом интервале.", "For values that are equally likely over a chosen numeric interval."],
+    ["Для проверки независимости двух категориальных переменных.", "For testing independence between two categorical variables."]
+  ],
+  27: [
+    ["Вероятность успеха в каждом отдельном испытании.", "The probability of success in each individual trial."],
+    ["Количество успехов, которое мы хотим получить в результате.", "The number of successes that we want to obtain."],
+    ["Число степеней свободы, используемое в статистическом тесте.", "The number of degrees of freedom used in a statistical test."]
+  ],
+  28: [
+    ["Количество независимых испытаний в биномиальном эксперименте.", "The number of independent trials in the binomial experiment."],
+    ["Количество успехов, для которого вычисляется конкретная вероятность.", "The number of successes for which a specific probability is computed."],
+    ["Вероятность получить больше k успехов в серии испытаний.", "The probability of getting more than k successes in a sequence of trials."]
+  ],
+  30: [
+    ["Потому что P(X=4) уже включает все случаи, где пациентов больше 4.", "Because P(X=4) already includes all cases where patients exceed 4."],
+    ["Потому что расходы зависят только от ровно четырех пациентов с эффектами.", "Because costs depend only on exactly four patients having side effects."],
+    ["Потому что хвостовая вероятность не используется для финансовых рисков.", "Because tail probability is not used for financial risk."]
+  ],
+  31: [
+    ["Число успехов в фиксированном числе независимых испытаний с вероятностью p.", "The number of successes in a fixed number of independent trials with probability p."],
+    ["Время ожидания между событиями, которые происходят с постоянной скоростью.", "The waiting time between events occurring at a constant rate."],
+    ["Сумму квадратов независимых стандартных нормальных величин.", "The sum of squares of independent standard normal variables."]
+  ],
+  33: [
+    ["Значения, которые равновероятны на ограниченном интервале.", "Values that are equally likely over a bounded interval."],
+    ["Число успехов в серии независимых испытаний с двумя исходами.", "The number of successes in independent trials with two outcomes."],
+    ["Сумму квадратов стандартных нормальных случайных величин.", "The sum of squared standard normal random variables."]
+  ],
+  35: [
+    ["Как значение PDF в точке 10 для экспоненциального распределения.", "As the PDF value at 10 for the exponential distribution."],
+    ["Как CDF(10), потому что это уже вероятность ждать больше 10 минут.", "As CDF(10), because that already means waiting more than 10 minutes."],
+    ["Как PMF(10), потому что время ожидания в примере является дискретным.", "As PMF(10), because waiting time in the example is discrete."]
+  ],
+  36: [
+    ["Потому что все реальные признаки в датасетах строго нормальны по определению.", "Because all real dataset features are strictly normal by definition."],
+    ["Потому что нормальное распределение описывает только категориальные частоты.", "Because the normal distribution describes only categorical frequencies."],
+    ["Потому что нормальность всегда гарантирует причинную связь между переменными.", "Because normality always guarantees a causal relation between variables."]
+  ],
+  39: [
+    ["Как сумму k независимых нормальных величин без возведения в квадрат.", "As the sum of k independent normal variables without squaring."],
+    ["Как произведение k независимых стандартных нормальных величин.", "As the product of k independent standard normal variables."],
+    ["Как среднее k биномиальных величин с одинаковой вероятностью успеха.", "As the mean of k binomial variables with the same success probability."]
+  ],
+  40: [
+    ["Среднее значение генеральной совокупности, известное до сбора выборки.", "The population mean known before collecting the sample."],
+    ["Сумма наблюдений, нормированная на их выборочную дисперсию.", "The sum of observations normalized by their sample variance."],
+    ["Медиана наблюдений, делящая упорядоченную выборку пополам.", "The median of observations splitting the ordered sample in half."]
+  ],
+  41: [
+    ["При росте числа испытаний исходное распределение становится нормальным.", "As the number of trials grows, the original distribution becomes normal."],
+    ["При росте n каждое отдельное наблюдение стремится к математическому ожиданию.", "As n grows, each individual observation tends toward the expected value."],
+    ["При большом n выборочная дисперсия обязательно становится равной нулю.", "For large n, sample variance necessarily becomes zero."]
+  ],
+  42: [
+    ["При большом n сами исходные наблюдения становятся нормально распределенными.", "For large n, the raw original observations become normally distributed."],
+    ["При большом n любая выборочная медиана совпадает с математическим ожиданием.", "For large n, any sample median equals the expected value."],
+    ["При большом n p-value любого корректного теста стремится к единице.", "For large n, the p-value of any valid test tends to one."]
+  ],
+  43: [
+    ["Она равна sigma squared times n, поэтому растет вместе с размером выборки.", "It is sigma squared times n, so it grows with sample size."],
+    ["Она равна sigma squared и не зависит от размера выборки.", "It equals sigma squared and does not depend on sample size."],
+    ["Она равна sigma divided by n, поэтому измеряется в других единицах.", "It equals sigma divided by n, so it has different units."]
+  ],
+  44: [
+    ["Потому что выборочная дисперсия всегда использует известное истинное среднее.", "Because sample variance always uses the known true mean."],
+    ["Потому что деление на n делает оценку слишком большой для малых выборок.", "Because division by n makes the estimate too large for small samples."],
+    ["Потому что дисперсию нельзя оценивать по независимым наблюдениям.", "Because variance cannot be estimated from independent observations."]
+  ],
+  45: [
+    ["Использует деление на n вместо n-1, чтобы оценка была менее шумной.", "Uses division by n instead of n-1 so the estimate is less noisy."],
+    ["Заменяет выборочное среднее истинным средним, если оно неизвестно.", "Replaces the sample mean with the true mean when it is unknown."],
+    ["Корректирует p-value после множественных сравнений между группами.", "Corrects p-values after multiple comparisons between groups."]
+  ],
+  46: [
+    ["Разброс распределения вокруг среднего в квадратных единицах измерения.", "The spread of a distribution around the mean in squared units."],
+    ["Положение центра распределения как средневзвешенное значение.", "The center location of a distribution as a weighted average."],
+    ["Силу линейной связи между двумя числовыми переменными.", "The strength of linear association between two numeric variables."]
+  ],
+  47: [
+    ["Когда распределение симметрично и не содержит экстремальных наблюдений.", "When the distribution is symmetric and has no extreme observations."],
+    ["Когда среднее, медиана и мода примерно совпадают между собой.", "When the mean, median, and mode are approximately equal."],
+    ["Когда выборка достаточно большая и все значения имеют одинаковый вес.", "When the sample is large enough and all values have equal weight."]
+  ],
+  48: [
+    ["Значение, которое встречается в выборке чаще остальных значений.", "The value that appears in the sample more often than the others."],
+    ["Средневзвешенное значение наблюдений с учетом вероятностей.", "The weighted average of observations accounting for probabilities."],
+    ["Разброс центральных 50 процентов значений в упорядоченной выборке.", "The spread of the central 50 percent of values in an ordered sample."]
+  ],
+  49: [
+    ["Значение, которое делит упорядоченную выборку на две равные половины.", "The value that splits the ordered sample into two equal halves."],
+    ["Среднее значение выборки, чувствительное к экстремальным наблюдениям.", "The sample average, which is sensitive to extreme observations."],
+    ["Разница между третьим и первым квартилем распределения.", "The difference between the third and first quartiles of a distribution."]
+  ],
+  50: [
+    ["Значение, выше которого находится p процентов данных.", "The value above which p percent of the data lie."],
+    ["Доля наблюдений, которые равны ровно выбранному значению p.", "The fraction of observations exactly equal to the chosen value p."],
+    ["Вероятность отвергнуть нулевую гипотезу на уровне p.", "The probability of rejecting the null hypothesis at level p."]
+  ],
+  52: [
+    ["Расстояние между медианой и средним значением выборки.", "The distance between the median and the sample mean."],
+    ["Разность между максимальным и минимальным наблюдением.", "The difference between the maximum and minimum observation."],
+    ["Интервал mean plus/minus 1.96 standard deviations.", "The interval mean plus/minus 1.96 standard deviations."]
+  ],
+  53: [
+    ["Среднее, стандартное отклонение и доверительный интервал вокруг среднего.", "Mean, standard deviation, and a confidence interval around the mean."],
+    ["Форму PDF, CDF и хвостовые вероятности одного распределения.", "The PDF shape, CDF, and tail probabilities of one distribution."],
+    ["Наблюдаемые и ожидаемые частоты для категориального теста.", "Observed and expected counts for a categorical test."]
+  ],
+  55: [
+    ["Для проверки независимости пола и вида в категориальной таблице.", "To test independence between sex and species in a categorical table."],
+    ["Для сравнения формы распределений счетов между двумя группами.", "To compare the shape of bill distributions between two groups."],
+    ["Для оценки среднего ожидания между приходами клиентов.", "To estimate the mean waiting time between customer arrivals."]
+  ],
+  56: [
+    ["Для сравнения средних значений двух независимых выборок.", "To compare mean values of two independent samples."],
+    ["Для проверки независимости категорий в таблице частот.", "To test category independence in a frequency table."],
+    ["Для оценки хвостовой вероятности нормального распределения.", "To estimate a tail probability of a normal distribution."]
+  ],
+  57: [
+    ["Маргинальные вероятности одной величины после суммирования по другой.", "Marginal probabilities of one variable after summing over the other."],
+    ["Условную вероятность одной величины при фиксированном значении другой.", "Conditional probability of one variable at a fixed value of another."],
+    ["Ковариацию двух переменных, нормированную на их стандартные отклонения.", "Covariance of two variables normalized by their standard deviations."]
+  ],
+  58: [
+    ["Удаление влияния среднего перед вычислением ковариации двух переменных.", "Removing the mean effect before computing covariance of two variables."],
+    ["Получение условной вероятности делением ячейки на сумму всей таблицы.", "Obtaining conditional probability by dividing a cell by the whole table sum."],
+    ["Переход от непрерывного распределения к дискретной PMF по интервалам.", "Moving from a continuous distribution to a discrete PMF by intervals."]
+  ],
+  59: [
+    ["Как отношение соответствующей ячейки к общему числу всех наблюдений.", "As the cell count divided by the total number of all observations."],
+    ["Как сумма всех ячеек в строке и столбце без нормировки.", "As the sum of all cells in the row and column without normalization."],
+    ["Как произведение маргинальных вероятностей, даже если есть зависимость.", "As the product of marginal probabilities even if dependence exists."]
+  ],
+  60: [
+    ["Когда ковариация равна нулю, даже если остается возможная нелинейная связь.", "When covariance equals zero, even if a nonlinear relationship may still exist."],
+    ["Когда средние значения X и Y совпадают, а дисперсии примерно одинаковы.", "When the means of X and Y are equal and the variances are approximately equal."],
+    ["Когда условная вероятность всегда больше соответствующей маргинальной вероятности.", "When conditional probability is always greater than the corresponding marginal probability."]
+  ],
+  61: [
+    ["Нормированную линейную связь двух переменных в диапазоне от -1 до 1.", "The normalized linear relationship between two variables from -1 to 1."],
+    ["Разброс одной переменной вокруг ее собственного среднего значения.", "The spread of one variable around its own mean."],
+    ["Вероятность того, что две категориальные переменные независимы.", "The probability that two categorical variables are independent."]
+  ],
+  62: [
+    ["Ковариации между каждой парой разных переменных.", "Covariances between each pair of different variables."],
+    ["Корреляции Пирсона между нормированными признаками.", "Pearson correlations between normalized features."],
+    ["Средние значения переменных, использованных в матрице.", "The means of the variables used in the matrix."]
+  ],
+  63: [
+    ["Потому что ковариация проверяет любую зависимость, включая нелинейную.", "Because covariance tests any dependence, including nonlinear dependence."],
+    ["Потому что независимость и нулевая ковариация являются одним и тем же условием.", "Because independence and zero covariance are exactly the same condition."],
+    ["Потому что ковариация не зависит от формы связи и масштаба переменных.", "Because covariance is independent of relationship shape and variable scale."]
+  ],
+  64: [
+    ["Она усиливает ковариацию, чтобы большие признаки сильнее влияли на вывод.", "It amplifies covariance so larger-scale features influence the conclusion more."],
+    ["Она превращает любую нелинейную зависимость в сильную линейную связь.", "It turns any nonlinear dependence into a strong linear relationship."],
+    ["Она заменяет ковариационную матрицу таблицей категориальных частот.", "It replaces the covariance matrix with a categorical frequency table."]
+  ],
+  67: [
+    ["Гипотеза, которую принимают как доказанную, если p-value больше alpha.", "A hypothesis accepted as proven if the p-value is greater than alpha."],
+    ["Утверждение, которое всегда говорит, что между группами есть различие.", "A claim that always states there is a difference between groups."],
+    ["Любая альтернативная модель, обученная после анализа распределений.", "Any alternative model trained after distribution analysis."]
+  ],
+  68: [
+    ["Базовое утверждение, которое проверяют и затем считают доказанным при большом p-value.", "A baseline claim that is tested and then considered proven if the p-value is large."],
+    ["Вероятность получить наблюдение при условии, что нулевая гипотеза верна.", "The probability of obtaining the observation assuming the null hypothesis is true."],
+    ["Порог значимости, который выбирают перед вычислением статистики и p-value.", "The significance threshold chosen before computing the statistic and p-value."]
+  ],
+  69: [
+    ["Вероятность наблюдать настолько же экстремальный результат при верной H0.", "The probability of observing a result this extreme when H0 is true."],
+    ["Критическое значение статистики, вычисленное по данным после теста.", "The critical statistic value computed from the data after the test."],
+    ["Оценка доли ошибок модели на отложенной тестовой выборке.", "An estimate of the model error rate on a held-out test sample."]
+  ],
+  70: [
+    ["Вероятность того, что нулевая гипотеза истинна после учета данных.", "The probability that the null hypothesis is true after observing the data."],
+    ["Порог ошибки, который заранее выбирают для отклонения H0.", "The error threshold chosen in advance for rejecting H0."],
+    ["Вероятность получить ровно такое же значение статистики и не более экстремальное.", "The probability of getting exactly the same statistic and nothing more extreme."]
+  ],
+  71: [
+    ["Нулевая гипотеза считается доказанной и больше не требует проверки.", "The null hypothesis is considered proven and no longer needs testing."],
+    ["Нулевую гипотезу не отвергают, потому что результат достаточно обычный.", "The null hypothesis is not rejected because the result is sufficiently ordinary."],
+    ["Уровень значимости alpha увеличивают, пока решение не изменится.", "The significance level alpha is increased until the decision changes."]
+  ],
+  72: [
+    ["Вероятность получить наблюдение не менее экстремальное при H0.", "The probability of obtaining an observation at least as extreme under H0."],
+    ["Разницу между третьим и первым квартилем в стандартных отклонениях.", "The difference between the third and first quartiles in standard deviations."],
+    ["Число независимых испытаний, использованных в биномиальном распределении.", "The number of independent trials used in a binomial distribution."]
+  ],
+  73: [
+    ["Когда sigma популяции неизвестна и заменяется выборочным стандартным отклонением.", "When population sigma is unknown and replaced by the sample standard deviation."],
+    ["Когда сравнивали средние двух независимых выборок с разными дисперсиями.", "When comparing means of two independent samples with unequal variances."],
+    ["Когда проверяли независимость категорий в таблице сопряженности.", "When testing category independence in a contingency table."]
+  ],
+  74: [
+    ["Потому что 1.96 - это среднее стандартного нормального распределения.", "Because 1.96 is the mean of the standard normal distribution."],
+    ["Потому что 95 процентов распределения лежит только в правом хвосте.", "Because 95 percent of the distribution lies only in the right tail."],
+    ["Потому что alpha=0.05 оставляет 5 процентов в каждом хвосте.", "Because alpha=0.05 leaves 5 percent in each tail."]
+  ],
+  75: [
+    ["Монета смещена, поэтому число орлов не может следовать B(6, 0.5).", "The coin is biased, so the number of heads cannot follow B(6, 0.5)."],
+    ["Монета честная, поэтому каждый результат серии из шести бросков имеет p=0.5.", "The coin is fair, so each six-toss sequence has probability p=0.5."],
+    ["Монета нечестная, если в шести бросках выпал хотя бы один орел.", "The coin is unfair if at least one head appears in six tosses."]
+  ],
+  76: [
+    ["Когда известна sigma популяции и проверяется среднее большой выборки.", "When population sigma is known and the mean of a large sample is tested."],
+    ["Когда сравниваются частоты категорий в таблице сопряженности.", "When category frequencies in a contingency table are compared."],
+    ["Когда нужно оценить вероятность успехов в биномиальном эксперименте.", "When estimating success probabilities in a binomial experiment."]
+  ],
+  80: [
+    ["Нулевая гипотеза о среднем 180 мм не была отвергнута по данным.", "The null hypothesis of mean 180 mm was not rejected by the data."],
+    ["Тест доказал, что среднее всех пингвинов точно равно 180 мм.", "The test proved that the mean of all penguins is exactly 180 mm."],
+    ["Значение 180 мм использовалось как выборочное среднее без проверки.", "The 180 mm value was used as the sample mean without testing."]
+  ],
+  81: [
+    ["Равна ли дисперсия одной популяции заранее заданному значению.", "Whether the variance of one population equals a predefined value."],
+    ["Независимы ли две категориальные переменные в таблице частот.", "Whether two categorical variables are independent in a frequency table."],
+    ["Совпадает ли среднее одной выборки с заданным mu0.", "Whether one sample mean matches a predefined mu0."]
+  ],
+  82: [
+    ["Когда две выборки имеют одинаковый размер и заранее равные дисперсии.", "When two samples have equal size and known equal variances."],
+    ["Когда сравнивается одна выборка с фиксированным средним mu0.", "When one sample is compared with a fixed mean mu0."],
+    ["Когда проверяется независимость строк и столбцов таблицы сопряженности.", "When independence of rows and columns in a contingency table is tested."]
+  ],
+  83: [
+    ["Запускает обычный двухвыборочный t-test с общей объединенной дисперсией.", "Runs the ordinary two-sample t-test with a pooled common variance."],
+    ["Заставляет SciPy считать, что обе выборки имеют равный размер.", "Forces SciPy to assume both samples have equal size."],
+    ["Переключает тест на сравнение медиан вместо сравнения средних.", "Switches the test to compare medians instead of means."]
+  ],
+  84: [
+    ["Когда нужно сравнить одну выборку с фиксированным средним значением.", "When comparing one sample with a fixed mean value."],
+    ["Когда нужно проверить независимость двух категориальных признаков.", "When testing independence of two categorical features."],
+    ["Когда нужно сравнить две группы с разными дисперсиями.", "When comparing two groups with unequal variances."]
+  ],
+  85: [
+    ["Независимые выборки, равные медианы, одинаковый размер всех групп.", "Independent samples, equal medians, equal size of all groups."],
+    ["Нормальность выборок, разные дисперсии, зависимые наблюдения.", "Normal samples, unequal variances, dependent observations."],
+    ["Категориальные признаки, таблица сопряженности, большие ожидаемые частоты.", "Categorical features, contingency table, large expected counts."]
+  ],
+  87: [
+    ["Для сравнения средних трех и более независимых групп.", "To compare the means of three or more independent groups."],
+    ["Для проверки среднего одной непрерывной выборки против mu0.", "To test one continuous sample mean against mu0."],
+    ["Для вычисления корреляции между двумя числовыми признаками.", "To compute correlation between two numeric features."]
+  ],
+  88: [
+    ["Таблица средних значений непрерывной переменной по нескольким группам.", "A table of mean values of a continuous variable across groups."],
+    ["Матрица ковариаций между всеми числовыми признаками датасета.", "A covariance matrix between all numeric features in a dataset."],
+    ["Таблица p-values, полученных после нескольких статистических тестов.", "A table of p-values obtained after several statistical tests."]
+  ],
+  89: [
+    ["Из среднего значения всех ячеек и числа степеней свободы теста.", "From the mean of all cells and the test degrees of freedom."],
+    ["Из наблюдаемой ячейки, возведенной в квадрат и деленной на p-value.", "From the observed cell squared and divided by the p-value."],
+    ["Из стандартного отклонения каждой строки и суммы по столбцам.", "From each row standard deviation and column totals."]
+  ]
+};
+
+cards.forEach(card => {
+  if (balancedDistractors[card.id]) {
+    card.choices = [
+      card.choices[0],
+      ...balancedDistractors[card.id].map(item => ({ ru: item[0], en: item[1] }))
+    ];
+  }
+});
