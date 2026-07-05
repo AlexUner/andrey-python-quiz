@@ -1096,8 +1096,8 @@ const cards = [
 const balancedDistractors = {
   1: [
     ["Они нужны в основном для EDA и визуализации, но почти не помогают делать выводы по неопределенным данным.", "They are mainly needed for EDA and visualization, but do not help much with uncertain data."],
-    ["Они используются только после обучения модели, когда нужно оформить итоговый отчет и сравнить графики.", "They are used only after model training, when preparing the final report and comparing plots."],
-    ["Они важны только для больших датасетов, а для малых выборок статистические выводы почти не применяются.", "They matter only for large datasets; for small samples statistical conclusions are rarely used."]
+    ["Они нужны главным образом на этапе оформления отчета и сравнения визуализаций.", "They are mainly needed at the report-writing stage and for comparing visualizations."],
+    ["Они наиболее полезны при больших датасетах, где ручная проверка данных затруднена и нужна формальная оценка неопределенности.", "They are most useful with large datasets where manual checking is difficult and formal uncertainty estimates are needed."]
   ],
   2: [
     ["Набор исходов, которые считаются успешными в конкретной проверяемой гипотезе.", "The set of outcomes treated as successful in a specific tested hypothesis."],
@@ -1112,7 +1112,7 @@ const balancedDistractors = {
   4: [
     ["P(A) может быть больше 1, если событие встречается чаще среднего в выборке.", "P(A) can exceed 1 if the event occurs more often than average in a sample."],
     ["P(Omega) выбирают по данным, а сумма непересекающихся событий может быть любой.", "P(Omega) is chosen from data, and disjoint event sums can be arbitrary."],
-    ["Вероятность задается только для одиночных исходов, но не для объединений событий.", "Probability is defined only for single outcomes, not for unions of events."]
+    ["Вероятность задается для исходов, а объединения событий обычно считают отдельно.", "Probability is assigned to outcomes, while event unions are usually computed separately."]
   ],
   5: [
     ["Считают долю исходов события среди всех исходов, но затем нормируют ее на среднее.", "Count the event outcomes among all outcomes, then normalize by the mean."],
@@ -1130,14 +1130,14 @@ const balancedDistractors = {
     ["Событие, которое получается сложением вероятностей A и B без учета пересечения.", "An event obtained by adding probabilities of A and B without considering overlap."]
   ],
   8: [
-    ["Только те исходы, которые находятся одновременно в A и B.", "Only outcomes that are simultaneously in A and B."],
+    ["Исходы, которые находятся одновременно в A и B.", "Outcomes that are simultaneously in A and B."],
     ["Все исходы пространства выборки, которые не принадлежат ни A, ни B.", "All sample-space outcomes that belong to neither A nor B."],
     ["Событие, полученное как разность вероятностей P(A) и P(B).", "An event obtained as the difference between P(A) and P(B)."]
   ],
   9: [
     ["Потому что пересечение не относится ни к A, ни к B и должно быть исключено.", "Because the intersection belongs to neither A nor B and must be excluded."],
-    ["Потому что пересечение всегда имеет вероятность 1 при любых двух событиях.", "Because the intersection always has probability 1 for any two events."],
-    ["Потому что объединение событий допускает только взаимоисключающие исходы.", "Because event union allows only mutually exclusive outcomes."]
+    ["Потому что пересечение рассматривается как отдельное третье событие.", "Because the intersection is treated as a separate third event."],
+    ["Потому что объединение событий считают через дополнения, а не через сумму.", "Because event union is computed through complements rather than sums."]
   ],
   10: [
     ["Когда вероятность одного события равна вероятности другого события.", "When the probability of one event equals the probability of another event."],
@@ -1146,11 +1146,11 @@ const balancedDistractors = {
   ],
   11: [
     ["Вероятность события B при условии, что событие A уже произошло.", "The probability of event B given that event A has already occurred."],
-    ["Вероятность того, что A и B не могут произойти в одном эксперименте.", "The probability that A and B cannot occur in the same experiment."],
+    ["Вероятность того, что A и B являются взаимоисключающими событиями.", "The probability that A and B are mutually exclusive events."],
     ["Вероятность события A без учета любой информации о событии B.", "The probability of event A without using any information about event B."]
   ],
   12: [
-    ["Когда A и B имеют пустое пересечение и не могут случиться одновременно.", "When A and B have an empty intersection and cannot occur together."],
+    ["Когда A и B имеют пустое пересечение и являются взаимоисключающими.", "When A and B have an empty intersection and are mutually exclusive."],
     ["Когда P(A | B) больше P(A), потому что B усиливает вероятность A.", "When P(A | B) is greater than P(A), because B increases A's probability."],
     ["Когда оба события имеют одинаковую вероятность, но могут зависеть друг от друга.", "When both events have equal probability but may still depend on each other."]
   ],
@@ -1170,23 +1170,23 @@ const balancedDistractors = {
     ["Вероятность всех возможных наблюдений независимо от выбранной гипотезы.", "The probability of all possible observations independent of the chosen hypothesis."]
   ],
   16: [
-    ["Потому что likelihood всегда полностью заменяет prior в формуле Байеса.", "Because likelihood always fully replaces the prior in Bayes' formula."],
-    ["Потому что базовые вероятности нужны только при равных likelihood.", "Because base rates are needed only when likelihoods are equal."],
-    ["Потому что posterior зависит только от описания наблюдения, а не от частот классов.", "Because posterior depends only on the observation description, not on class frequencies."]
+    ["Потому что likelihood полностью определяет posterior без учета prior.", "Because likelihood fully determines the posterior without the prior."],
+    ["Потому что базовые вероятности важны главным образом при равных likelihood.", "Because base rates matter mainly when likelihoods are equal."],
+    ["Потому что posterior зависит от описания наблюдения сильнее, чем от частот классов.", "Because posterior depends more on the observation description than on class frequencies."]
   ],
   17: [
     ["Множество всех возможных исходов эксперимента до назначения вероятностей.", "The set of all possible experiment outcomes before probabilities are assigned."],
     ["Таблица, где каждому значению уже сопоставлена его выборочная частота.", "A table where each value already has its sample frequency assigned."],
-    ["Параметр распределения, который задает только его среднее значение.", "A distribution parameter that defines only its expected value."]
+    ["Параметр распределения, который задает его среднее значение.", "A distribution parameter that defines its expected value."]
   ],
   18: [
-    ["Дискретная задается PDF, а непрерывная всегда задается только PMF.", "A discrete variable is defined by a PDF, while a continuous one uses only a PMF."],
+    ["Дискретная задается PDF, а непрерывная описывается PMF по отдельным точкам.", "A discrete variable is defined by a PDF, while a continuous one uses pointwise PMF."],
     ["Дискретная может принимать любые вещественные значения на интервале.", "A discrete variable can take any real value over an interval."],
     ["Непрерывная принимает конечный список значений, а дискретная - интервалы.", "A continuous variable takes a finite value list, while a discrete one uses intervals."]
   ],
   19: [
-    ["Потому что непрерывная величина не может быть измерена численно в эксперименте.", "Because a continuous variable cannot be measured numerically in an experiment."],
-    ["Потому что PDF в каждой отдельной точке всегда обязана быть равной нулю.", "Because the PDF at every individual point must always equal zero."],
+    ["Потому что непрерывную величину обычно измеряют только приблизительно.", "Because a continuous variable is usually measured approximately."],
+    ["Потому что значение PDF в точке трактуется как вероятность этой точки.", "Because the PDF value at a point is treated as that point's probability."],
     ["Потому что CDF запрещает вычислять вероятность на интервалах значений.", "Because the CDF forbids computing probabilities over value intervals."]
   ],
   20: [
@@ -1236,7 +1236,7 @@ const balancedDistractors = {
   ],
   30: [
     ["Потому что P(X=4) уже включает все случаи, где пациентов больше 4.", "Because P(X=4) already includes all cases where patients exceed 4."],
-    ["Потому что расходы зависят только от ровно четырех пациентов с эффектами.", "Because costs depend only on exactly four patients having side effects."],
+    ["Потому что расходы зависят главным образом от ровно четырех пациентов с эффектами.", "Because costs depend mainly on exactly four patients having side effects."],
     ["Потому что хвостовая вероятность не используется для финансовых рисков.", "Because tail probability is not used for financial risk."]
   ],
   31: [
@@ -1256,8 +1256,13 @@ const balancedDistractors = {
   ],
   36: [
     ["Потому что все реальные признаки в датасетах строго нормальны по определению.", "Because all real dataset features are strictly normal by definition."],
-    ["Потому что нормальное распределение описывает только категориальные частоты.", "Because the normal distribution describes only categorical frequencies."],
-    ["Потому что нормальность всегда гарантирует причинную связь между переменными.", "Because normality always guarantees a causal relation between variables."]
+    ["Потому что нормальное распределение удобно описывает категориальные частоты.", "Because the normal distribution conveniently describes categorical frequencies."],
+    ["Потому что нормальность помогает напрямую установить причинную связь переменных.", "Because normality helps directly establish causal relationships between variables."]
+  ],
+  38: [
+    ["Интервал между первым и третьим квартилем распределения.", "The interval between the first and third quartiles of the distribution."],
+    ["Интервал mu plus/minus one standard deviation around the mean.", "The interval mu plus/minus one standard deviation around the mean."],
+    ["Интервал от минимального до максимального наблюдаемого значения.", "The interval from the minimum to the maximum observed value."]
   ],
   39: [
     ["Как сумму k независимых нормальных величин без возведения в квадрат.", "As the sum of k independent normal variables without squaring."],
@@ -1285,9 +1290,9 @@ const balancedDistractors = {
     ["Она равна sigma divided by n, поэтому измеряется в других единицах.", "It equals sigma divided by n, so it has different units."]
   ],
   44: [
-    ["Потому что выборочная дисперсия всегда использует известное истинное среднее.", "Because sample variance always uses the known true mean."],
+    ["Потому что выборочная дисперсия использует известное истинное среднее.", "Because sample variance uses the known true mean."],
     ["Потому что деление на n делает оценку слишком большой для малых выборок.", "Because division by n makes the estimate too large for small samples."],
-    ["Потому что дисперсию нельзя оценивать по независимым наблюдениям.", "Because variance cannot be estimated from independent observations."]
+    ["Потому что независимые наблюдения плохо подходят для оценки разброса.", "Because independent observations are poorly suited for estimating spread."]
   ],
   45: [
     ["Использует деление на n вместо n-1, чтобы оценка была менее шумной.", "Uses division by n instead of n-1 so the estimate is less noisy."],
@@ -1357,7 +1362,7 @@ const balancedDistractors = {
   60: [
     ["Когда ковариация равна нулю, даже если остается возможная нелинейная связь.", "When covariance equals zero, even if a nonlinear relationship may still exist."],
     ["Когда средние значения X и Y совпадают, а дисперсии примерно одинаковы.", "When the means of X and Y are equal and the variances are approximately equal."],
-    ["Когда условная вероятность всегда больше соответствующей маргинальной вероятности.", "When conditional probability is always greater than the corresponding marginal probability."]
+    ["Когда условная вероятность заметно больше соответствующей маргинальной вероятности.", "When conditional probability is noticeably greater than the corresponding marginal probability."]
   ],
   61: [
     ["Нормированную линейную связь двух переменных в диапазоне от -1 до 1.", "The normalized linear relationship between two variables from -1 to 1."],
@@ -1379,9 +1384,14 @@ const balancedDistractors = {
     ["Она превращает любую нелинейную зависимость в сильную линейную связь.", "It turns any nonlinear dependence into a strong linear relationship."],
     ["Она заменяет ковариационную матрицу таблицей категориальных частот.", "It replaces the covariance matrix with a categorical frequency table."]
   ],
+  65: [
+    ["От 0 до 1, если связь между переменными положительная.", "From 0 to 1 when the relationship between variables is positive."],
+    ["От минус бесконечности до плюс бесконечности, как у ковариации.", "From minus infinity to plus infinity, like covariance."],
+    ["От -100 до 100 процентов после умножения на размер выборки.", "From -100 to 100 percent after multiplying by sample size."]
+  ],
   67: [
     ["Гипотеза, которую принимают как доказанную, если p-value больше alpha.", "A hypothesis accepted as proven if the p-value is greater than alpha."],
-    ["Утверждение, которое всегда говорит, что между группами есть различие.", "A claim that always states there is a difference between groups."],
+    ["Утверждение, которое обычно говорит, что между группами есть различие.", "A claim that usually states there is a difference between groups."],
     ["Любая альтернативная модель, обученная после анализа распределений.", "Any alternative model trained after distribution analysis."]
   ],
   68: [
@@ -1416,11 +1426,11 @@ const balancedDistractors = {
   ],
   74: [
     ["Потому что 1.96 - это среднее стандартного нормального распределения.", "Because 1.96 is the mean of the standard normal distribution."],
-    ["Потому что 95 процентов распределения лежит только в правом хвосте.", "Because 95 percent of the distribution lies only in the right tail."],
+    ["Потому что 95 процентов распределения относят к одному правому хвосту.", "Because 95 percent of the distribution is assigned to one right tail."],
     ["Потому что alpha=0.05 оставляет 5 процентов в каждом хвосте.", "Because alpha=0.05 leaves 5 percent in each tail."]
   ],
   75: [
-    ["Монета смещена, поэтому число орлов не может следовать B(6, 0.5).", "The coin is biased, so the number of heads cannot follow B(6, 0.5)."],
+    ["Монета смещена, поэтому число орлов лучше описывать распределением B(6, p).", "The coin is biased, so the number of heads is better described by B(6, p)."],
     ["Монета честная, поэтому каждый результат серии из шести бросков имеет p=0.5.", "The coin is fair, so each six-toss sequence has probability p=0.5."],
     ["Монета нечестная, если в шести бросках выпал хотя бы один орел.", "The coin is unfair if at least one head appears in six tosses."]
   ],
@@ -1428,6 +1438,11 @@ const balancedDistractors = {
     ["Когда известна sigma популяции и проверяется среднее большой выборки.", "When population sigma is known and the mean of a large sample is tested."],
     ["Когда сравниваются частоты категорий в таблице сопряженности.", "When category frequencies in a contingency table are compared."],
     ["Когда нужно оценить вероятность успехов в биномиальном эксперименте.", "When estimating success probabilities in a binomial experiment."]
+  ],
+  77: [
+    ["n + 1, потому что одна степень свободы добавляется при оценке среднего.", "n + 1, because one degree of freedom is added when estimating the mean."],
+    ["2n - 2 для любого t-test независимо от числа сравниваемых выборок.", "2n - 2 for any t-test regardless of the number of compared samples."],
+    ["Число категорий минус 1, как в критерии независимости chi-square.", "The number of categories minus 1, as in the chi-square independence test."]
   ],
   80: [
     ["Нулевая гипотеза о среднем 180 мм не была отвергнута по данным.", "The null hypothesis of mean 180 mm was not rejected by the data."],

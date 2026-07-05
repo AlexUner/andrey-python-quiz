@@ -876,3 +876,375 @@ const cards = [
     "Matplotlib дает контроль, Seaborn ускоряет статистическую визуализацию.",
     "Matplotlib gives control; Seaborn speeds up statistical visualization.")
 ];
+
+const balancedDistractors = {
+  1: [
+    ["Библиотекам NumPy и Pandas как основным инструментам табличной обработки данных.", "NumPy and Pandas as the main tools for tabular data processing."],
+    ["Методам классификации и регрессии с оценкой качества моделей.", "Classification and regression methods with model-quality evaluation."],
+    ["Разделу статистики, связанному с проверкой гипотез и распределениями.", "The statistics section related to hypothesis testing and distributions."]
+  ],
+  2: [
+    ["Библиотека для статистической визуализации с готовыми высокоуровневыми графиками поверх Matplotlib.", "A library for statistical visualization with high-level plots built on top of Matplotlib."],
+    ["Интерфейс Pandas, который автоматически строит отчеты, профили и сводные графики по DataFrame.", "A Pandas interface that automatically builds reports, profiles, and summary plots for a DataFrame."],
+    ["Модуль SciPy для вычисления распределений, статистических тестов, p-value и доверительных интервалов.", "A SciPy module for computing distributions, statistical tests, p-values, and confidence intervals."]
+  ],
+  3: [
+    ["Низкоуровневая библиотека, на которой напрямую создают Figure, Axes и Axis.", "A low-level library where Figure, Axes, and Axis are created directly."],
+    ["Расширение NumPy для генерации сеток, случайных чисел и массивов.", "A NumPy extension for generating grids, random numbers, and arrays."],
+    ["Инструмент Jupyter для запуска интерактивных 3D-скриптов вне ноутбука.", "A Jupyter tool for running interactive 3D scripts outside notebooks."]
+  ],
+  4: [
+    ["`pip install numpy pandas`, потому что Matplotlib и Seaborn входят в Pandas.", "`pip install numpy pandas`, because Matplotlib and Seaborn are included in Pandas."],
+    ["`python install matplotlib seaborn`, если запускать установку из ноутбука.", "`python install matplotlib seaborn`, when installing from a notebook."],
+    ["`conda import matplotlib seaborn`, если библиотеки уже есть в окружении.", "`conda import matplotlib seaborn`, if the libraries are already in the environment."]
+  ],
+  5: [
+    ["Использовать команду установки из активного окружения, где запускается notebook.", "Use the install command from the active environment where the notebook runs."],
+    ["Проверить, что kernel Jupyter связан с тем же Python, куда ставятся пакеты.", "Check that the Jupyter kernel is linked to the same Python where packages are installed."],
+    ["Сначала обновить package manager, если импорт не видит установленную библиотеку.", "First update the package manager if imports do not see the installed library."]
+  ],
+  6: [
+    ["`import matplotlib as plt`, чтобы обращаться к функциям как `plt.pyplot.plot`.", "`import matplotlib as plt`, to call functions as `plt.pyplot.plot`."],
+    ["`from matplotlib import plot as plt`, чтобы импортировать функцию построения линии.", "`from matplotlib import plot as plt`, to import the line-plotting function."],
+    ["`import pyplot.matplotlib as plt`, если работа идет внутри Jupyter Notebook.", "`import pyplot.matplotlib as plt`, if working inside Jupyter Notebook."]
+  ],
+  7: [
+    ["`import seaborn as sb`, потому что это стандартный псевдоним в документации.", "`import seaborn as sb`, because this is the standard alias in the documentation."],
+    ["`from seaborn import sns`, чтобы импортировать объект визуализации как имя `sns`.", "`from seaborn import sns`, to import the visualization object as `sns`."],
+    ["`import matplotlib.seaborn as sns`, потому что Seaborn является частью pyplot.", "`import matplotlib.seaborn as sns`, because Seaborn is part of pyplot."]
+  ],
+  8: [
+    ["Чтобы напрямую создавать Figure и Axes без обращения к pyplot-интерфейсу.", "To create Figure and Axes directly without using the pyplot interface."],
+    ["Чтобы загрузить встроенные датасеты Seaborn вроде `iris` и `tips`.", "To load built-in Seaborn datasets such as `iris` and `tips`."],
+    ["Чтобы сохранять готовые графики в SVG, PNG и PDF через `savefig`.", "To save finished plots as SVG, PNG, and PDF via `savefig`."]
+  ],
+  9: [
+    ["Область внутри графика, где находятся данные, шкалы и подписи осей.", "The area inside a plot where data, scales, and axis labels are placed."],
+    ["Одна координатная ось с делениями, locator и formatter.", "A single coordinate axis with ticks, locator, and formatter."],
+    ["Объект линии, который возвращается при вызове `ax.plot()`.", "A line object returned by calling `ax.plot()`."]
+  ],
+  10: [
+    ["Вся фигура Matplotlib, которая может содержать один или несколько графиков.", "The whole Matplotlib figure that can contain one or more plots."],
+    ["Отдельная координатная ось X или Y с делениями и форматированием.", "A single X or Y coordinate axis with ticks and formatting."],
+    ["Набор параметров цвета, маркера и стиля линии для `plot()`.", "A set of color, marker, and line-style parameters for `plot()`."]
+  ],
+  11: [
+    ["Axis - вся область графика, а Axes - отдельная шкала X или Y.", "Axis is the whole plot area, while Axes is a single X or Y scale."],
+    ["Axis - объект Figure, а Axes - объект сохранения файла через `savefig`.", "Axis is a Figure object, while Axes is the file-saving object for `savefig`."],
+    ["Axis - подпись легенды, а Axes - форматная строка цвета и маркера.", "Axis is a legend label, while Axes is the color and marker format string."]
+  ],
+  12: [
+    ["Массив координат X и Y, подготовленный для первого line plot.", "An array of X and Y coordinates prepared for the first line plot."],
+    ["Объект Seaborn FacetGrid и набор категорий для `hue`.", "A Seaborn FacetGrid object and a set of categories for `hue`."],
+    ["Список Line2D-объектов без доступа к Figure.", "A list of Line2D objects without access to the Figure."]
+  ],
+  13: [
+    ["Чтобы Pandas автоматически назначил `hue`, `size` и `style` по столбцам.", "So Pandas automatically assigns `hue`, `size`, and `style` by columns."],
+    ["Чтобы Seaborn загрузил встроенный датасет и применил тему по умолчанию.", "So Seaborn loads a built-in dataset and applies the default theme."],
+    ["Чтобы `savefig` мог определить формат файла по расширению.", "So `savefig` can infer the file format from the extension."]
+  ],
+  14: [
+    ["Стиль, где pyplot хранит текущую фигуру, а команды `plt.*` меняют ее состояние.", "A style where pyplot keeps the current figure and `plt.*` commands change its state."],
+    ["Стиль, где каждая команда строится через Seaborn и возвращает DataFrame.", "A style where each command is built through Seaborn and returns a DataFrame."],
+    ["Стиль, где график создается как HTML-виджет внутри Jupyter.", "A style where the plot is created as an HTML widget inside Jupyter."]
+  ],
+  15: [
+    ["Подход, где график явно создается через `fig, ax` и методы объекта `ax`.", "An approach where the plot is explicitly created through `fig, ax` and `ax` methods."],
+    ["Подход Seaborn, где все подписи и легенды создаются автоматически.", "A Seaborn approach where labels and legends are created automatically."],
+    ["Подход, где данные обязательно передаются как именованные DataFrame-столбцы.", "An approach where data must be passed as named DataFrame columns."]
+  ],
+  16: [
+    ["Передать `label` в `plot`, а затем вызвать `plt.legend()` или `ax.legend()`.", "Pass `label` to `plot`, then call `plt.legend()` or `ax.legend()`."],
+    ["Вызвать `plt.title()` с названием серии, чтобы Matplotlib сделал легенду.", "Call `plt.title()` with the series name so Matplotlib creates the legend."],
+    ["Использовать `plt.xlabel()` и `plt.ylabel()`, потому что они создают legend.", "Use `plt.xlabel()` and `plt.ylabel()`, because they create the legend."]
+  ],
+  17: [
+    ["Кортеж из трех Axes, где каждый график занимает одну строку.", "A tuple of three Axes where each plot occupies one row."],
+    ["Один объект Axes с тремя независимыми линиями на общей оси.", "One Axes object with three independent lines on the same axis."],
+    ["Figure и сетку 3 на 1, потому что первый аргумент задает столбцы.", "A Figure and a 3-by-1 grid because the first argument defines columns."]
+  ],
+  18: [
+    ["Чтобы разместить несколько связанных графиков в одной Figure.", "To place several related plots inside one Figure."],
+    ["Чтобы автоматически сохранить несколько версий графика в файлы.", "To automatically save several versions of a plot to files."],
+    ["Чтобы заменить `plot()` на статистический график Seaborn.", "To replace `plot()` with a Seaborn statistical plot."]
+  ],
+  19: [
+    ["Сетку из двух строк и одного столбца, активируя второй график.", "A grid with two rows and one column, activating the second plot."],
+    ["Сетку из одной строки и двух столбцов, активируя первый график.", "A grid with one row and two columns, activating the first plot."],
+    ["Три независимых Figure, где `211` является идентификатором файла.", "Three independent Figures where `211` is a file identifier."]
+  ],
+  20: [
+    ["Сетку из двух строк и одного столбца, активируя первый график.", "A grid with two rows and one column, activating the first plot."],
+    ["Сетку из одной строки и двух столбцов, активируя второй график.", "A grid with one row and two columns, activating the second plot."],
+    ["Один график с двумя осями Y, где `121` задает вторую ось.", "One plot with two Y axes, where `121` defines the second axis."]
+  ],
+  21: [
+    ["Через `legend`, потому что подписи осей берутся из названий линий.", "Through `legend`, because axis labels are taken from line names."],
+    ["Через `set_title` для обеих осей, если используется OO-style.", "Through `set_title` for both axes when using OO-style."],
+    ["Через `savefig`, потому что подписи записываются при экспорте.", "Through `savefig`, because labels are written during export."]
+  ],
+  22: [
+    ["`ax.set_xlabel(...)`, потому что заголовок относится к оси X.", "`ax.set_xlabel(...)`, because the title belongs to the X axis."],
+    ["`ax.legend(...)`, если график содержит хотя бы одну подписанную линию.", "`ax.legend(...)`, if the plot contains at least one labeled line."],
+    ["`fig.savefig(...)`, если заголовок должен попасть в сохраненный файл.", "`fig.savefig(...)`, if the title must appear in the saved file."]
+  ],
+  23: [
+    ["Через обычные строки без `$...$`, Matplotlib сам распознает LaTeX.", "Through ordinary strings without `$...$`; Matplotlib detects LaTeX by itself."],
+    ["Через параметры `hue` и `style`, которые отвечают за математические формулы.", "Through `hue` and `style`, which are responsible for math formulas."],
+    ["Через `np.linspace`, потому что формулы создаются вместе с координатами.", "Through `np.linspace`, because formulas are created together with coordinates."]
+  ],
+  24: [
+    ["Красная линия с круглыми маркерами и сплошным соединением.", "A red line with circle markers and a solid connection."],
+    ["Синяя линия с квадратными маркерами и пунктирным соединением.", "A blue line with square markers and a dashed connection."],
+    ["Зеленые треугольники без соединительной линии между точками.", "Green triangles without a connecting line between points."]
+  ],
+  25: [
+    ["Синие квадраты, соединенные сплошной линией.", "Blue squares connected by a solid line."],
+    ["Черные точки, соединенные пунктирной линией.", "Black points connected by a dashed line."],
+    ["Красные круги, отображенные без соединительной линии.", "Red circles displayed without a connecting line."]
+  ],
+  26: [
+    ["Чтобы изменить свойства уже созданных Line2D-объектов.", "To change properties of already created Line2D objects."],
+    ["Чтобы создать сетку subplot из нескольких Figure.", "To create a subplot grid from several Figures."],
+    ["Чтобы загрузить встроенный dataset и назначить `hue`.", "To load a built-in dataset and assign `hue`."]
+  ],
+  27: [
+    ["Список доступных свойств объекта линии и их текущих значений.", "A list of available line-object properties and their current values."],
+    ["Новый subplot, в котором отображаются все свойства Figure.", "A new subplot where all Figure properties are displayed."],
+    ["Сохраненный SVG-файл со списком настроек графика.", "A saved SVG file with the list of plot settings."]
+  ],
+  28: [
+    ["Строит scatter, где `a` и `b` задают координаты, а `c` и `d` - цвет и размер.", "Builds a scatter plot where `a` and `b` are coordinates, and `c` and `d` set color and size."],
+    ["Строит line plot, где `a`, `b`, `c`, `d` являются отдельными линиями.", "Builds a line plot where `a`, `b`, `c`, and `d` are separate lines."],
+    ["Создает DataFrame из четырех массивов и передает его в Seaborn.", "Creates a DataFrame from four arrays and passes it to Seaborn."]
+  ],
+  29: [
+    ["Для изучения связи двух числовых переменных через облако точек.", "For studying the relationship between two numeric variables through a point cloud."],
+    ["Для сравнения распределений категорий через коробки и усы.", "For comparing category distributions through boxes and whiskers."],
+    ["Для отображения плотности двумерного поля на регулярной сетке.", "For displaying the density of a two-dimensional field on a regular grid."]
+  ],
+  30: [
+    ["Прозрачность точек, которая помогает видеть наложения.", "Point transparency, which helps reveal overlaps."],
+    ["Размер точек, который задается как массив значений.", "Point size, which is passed as an array of values."],
+    ["Цветовую карту, которая связывает числа с цветами.", "A color map that maps numbers to colors."]
+  ],
+  31: [
+    ["Цветовая карта, которая связывает числовые значения с оттенками.", "A color map that maps numeric values to colors."],
+    ["Прозрачность точек, которая регулирует видимость наложений.", "Point transparency that controls overlap visibility."],
+    ["Форматная строка, которая задает маркер и стиль линии.", "A format string that sets marker and line style."]
+  ],
+  32: [
+    ["Чтобы показать соответствие между цветом точек и числовой шкалой.", "To show the mapping between point color and the numeric scale."],
+    ["Чтобы создать легенду для категорий, заданных через `label`.", "To create a legend for categories defined through `label`."],
+    ["Чтобы заменить scatter plot на boxplot с теми же данными.", "To replace the scatter plot with a boxplot using the same data."]
+  ],
+  33: [
+    ["Чтобы разместить текстовую подпись в указанной точке графика.", "To place a text label at a specified point of the plot."],
+    ["Чтобы добавить стрелку от текста к выбранной точке данных.", "To add an arrow from text to a selected data point."],
+    ["Чтобы изменить формат делений оси через formatter.", "To change axis tick formatting through a formatter."]
+  ],
+  34: [
+    ["Чтобы добавить подпись с привязкой к точке и возможной стрелкой.", "To add a label anchored to a point, optionally with an arrow."],
+    ["Чтобы просто вывести строку в фиксированных координатах осей.", "To simply draw a string at fixed axis coordinates."],
+    ["Чтобы изменить подпись оси X или Y через OO-style.", "To change the X or Y axis label through OO-style."]
+  ],
+  35: [
+    ["Она задает тип преобразования значений на оси Y.", "It sets the transformation type for values on the Y axis."],
+    ["Она меняет формат маркеров на логарифмическую шкалу.", "It changes marker format to a logarithmic scale."],
+    ["Она переключает стиль построения между pyplot и OO-style.", "It switches plotting style between pyplot and OO-style."]
+  ],
+  36: [
+    ["Когда значения охватывают несколько порядков величины.", "When values span several orders of magnitude."],
+    ["Когда нужно сравнить группы через violin plot.", "When groups must be compared through a violin plot."],
+    ["Когда требуется показать отдельные категории цветом.", "When separate categories must be shown by color."]
+  ],
+  37: [
+    ["Чтобы получить координатные матрицы из одномерных массивов X и Y.", "To obtain coordinate matrices from one-dimensional X and Y arrays."],
+    ["Чтобы объединить несколько subplot в одну общую Figure.", "To combine several subplots into one common Figure."],
+    ["Чтобы преобразовать DataFrame в формат, удобный для Seaborn.", "To transform a DataFrame into a format convenient for Seaborn."]
+  ],
+  38: [
+    ["Цветную карту значений на двумерной сетке.", "A colored map of values on a two-dimensional grid."],
+    ["Контурные линии равного значения без заливки.", "Contour lines of equal value without filling."],
+    ["Парные scatter-графики для всех числовых признаков.", "Pairwise scatter plots for all numeric features."]
+  ],
+  39: [
+    ["Линии равного значения для функции на двумерной сетке.", "Lines of equal value for a function on a two-dimensional grid."],
+    ["Цветные прямоугольные ячейки для всех значений матрицы.", "Colored rectangular cells for all matrix values."],
+    ["Распределение одной переменной по категориям DataFrame.", "The distribution of one variable across DataFrame categories."]
+  ],
+  40: [
+    ["Заполненные области между уровнями контуров.", "Filled regions between contour levels."],
+    ["Подписанные значения на уже построенных contour lines.", "Labeled values on already drawn contour lines."],
+    ["Цветовую шкалу для scatter plot с параметром `c`.", "A color scale for a scatter plot with parameter `c`."]
+  ],
+  41: [
+    ["Они задают конкретные значения Z, по которым строятся контуры.", "They set the specific Z values at which contours are drawn."],
+    ["Они задают количество subplot в строках и столбцах.", "They define the number of subplots in rows and columns."],
+    ["Они задают подписи делений через locator и formatter.", "They set tick labels through locator and formatter."]
+  ],
+  42: [
+    ["Чтобы подписать уровни на contour lines.", "To label levels on contour lines."],
+    ["Чтобы создать цветовую шкалу для scatter plot.", "To create a color bar for a scatter plot."],
+    ["Чтобы сохранить контуры в SVG или PNG.", "To save contours as SVG or PNG."]
+  ],
+  43: [
+    ["Вызвать `fig.savefig(...)` или `plt.savefig(...)` с именем файла.", "Call `fig.savefig(...)` or `plt.savefig(...)` with a file name."],
+    ["Вызвать `ax.legend(...)`, потому что legend сохраняет Figure.", "Call `ax.legend(...)`, because legend saves the Figure."],
+    ["Передать имя файла в `plt.show(...)` после построения графика.", "Pass the file name to `plt.show(...)` after plotting."]
+  ],
+  44: [
+    ["Растровые и векторные форматы вроде PNG, PDF, SVG.", "Raster and vector formats such as PNG, PDF, SVG."],
+    ["Табличные форматы вроде CSV, XLSX и Parquet.", "Tabular formats such as CSV, XLSX, and Parquet."],
+    ["Notebook-форматы вроде IPYNB и HTML.", "Notebook formats such as IPYNB and HTML."]
+  ],
+  45: [
+    ["Потому что обновление Figure в ноутбуке зависит от backend и режима отображения.", "Because updating a Figure in a notebook depends on the backend and display mode."],
+    ["Потому что Matplotlib строит только статические изображения без событий.", "Because Matplotlib builds static images without events."],
+    ["Потому что Jupyter не позволяет выполнять Python-код после построения графика.", "Because Jupyter does not allow Python code to run after plotting."]
+  ],
+  46: [
+    ["Как Python-скрипт из терминала, например `python3 script.py`.", "As a Python script from the terminal, for example `python3 script.py`."],
+    ["Как CSV-файл, который Matplotlib автоматически откроет как анимацию.", "As a CSV file that Matplotlib will automatically open as an animation."],
+    ["Как notebook markdown cell с подключенным SVG-изображением.", "As a notebook markdown cell with an attached SVG image."]
+  ],
+  47: [
+    ["Запускать их как отдельные Python-скрипты, чтобы работало интерактивное окно.", "Run them as separate Python scripts so the interactive window works."],
+    ["Строить их только через Seaborn, потому что Matplotlib не поддерживает 3D.", "Build them through Seaborn because Matplotlib does not support 3D."],
+    ["Сохранять координаты в CSV, а затем открывать файл в Jupyter markdown.", "Save coordinates to CSV and then open the file in Jupyter markdown."]
+  ],
+  48: [
+    ["На Matplotlib, но добавляет более высокий уровень статистических графиков.", "On Matplotlib, but adds a higher level for statistical plots."],
+    ["На NumPy, заменяя все функции Matplotlib для построения линий.", "On NumPy, replacing all Matplotlib line-plotting functions."],
+    ["На Pandas, поэтому не использует Figure и Axes Matplotlib.", "On Pandas, so it does not use Matplotlib Figure and Axes."]
+  ],
+  49: [
+    ["С DataFrame и именованными столбцами, которые удобно передавать в параметры.", "With DataFrames and named columns that are convenient to pass as parameters."],
+    ["С meshgrid-массивами, где каждая точка сетки задает contour level.", "With meshgrid arrays where each grid point defines a contour level."],
+    ["С отдельными Line2D-объектами, полученными после `ax.plot()`.", "With separate Line2D objects returned after `ax.plot()`."]
+  ],
+  50: [
+    ["Relational, distributional и categorical plots.", "Relational, distributional, and categorical plots."],
+    ["Figure, Axes и Axis как три основных объекта.", "Figure, Axes, and Axis as the three main objects."],
+    ["Locator, Formatter и Legend как три модуля графика.", "Locator, Formatter, and Legend as the three plot modules."]
+  ],
+  51: [
+    ["`sns.load_dataset('iris')`", "`sns.load_dataset('iris')`"],
+    ["`pd.read_dataset('iris')`", "`pd.read_dataset('iris')`"],
+    ["`plt.load_dataset('iris')`", "`plt.load_dataset('iris')`"]
+  ],
+  52: [
+    ["`iris['species'].unique()`", "`iris['species'].unique()`"],
+    ["`sns.unique(iris, column='species')`", "`sns.unique(iris, column='species')`"],
+    ["`plt.unique(iris['species'])`", "`plt.unique(iris['species'])`"]
+  ],
+  53: [
+    ["Распределение значений одной переменной через столбцы частот.", "The distribution of one variable through frequency bars."],
+    ["Связь двух числовых переменных через облако точек.", "The relationship of two numeric variables through a point cloud."],
+    ["Квартильное сравнение числовой переменной по категориям.", "A quartile comparison of a numeric variable by categories."]
+  ],
+  54: [
+    ["Разделяет распределение по категориям, заданным столбцом `hue`.", "Splits the distribution by categories defined by the `hue` column."],
+    ["Задает размер точек по числовому признаку DataFrame.", "Sets point size according to a numeric DataFrame feature."],
+    ["Создает отдельные FacetGrid-колонки для каждого значения species.", "Creates separate FacetGrid columns for each species value."]
+  ],
+  55: [
+    ["Создает отдельные графики по значениям species в разных колонках.", "Creates separate plots for species values in different columns."],
+    ["Накладывает категории species на одну stacked histogram.", "Overlays species categories on a single stacked histogram."],
+    ["Назначает species как размер точек на scatter plot.", "Assigns species as point size on a scatter plot."]
+  ],
+  56: [
+    ["Чтобы показать связь двух числовых переменных и кодировать группы цветом.", "To show the relationship between two numeric variables and encode groups by color."],
+    ["Чтобы построить распределение одной переменной по нескольким FacetGrid.", "To plot one variable distribution across several FacetGrid panels."],
+    ["Чтобы сравнить квартили категорий через коробки и плотность.", "To compare category quartiles through boxes and density."]
+  ],
+  57: [
+    ["Чтобы кодировать площадь лепестка через размер точки.", "To encode petal area through point size."],
+    ["Чтобы назначить species как facet column.", "To assign species as a facet column."],
+    ["Чтобы подписать contour levels на двумерной сетке.", "To label contour levels on a two-dimensional grid."]
+  ],
+  58: [
+    ["Комбинация scatter plot и маргинальных распределений двух переменных.", "A combination of scatter plot and marginal distributions of two variables."],
+    ["Набор всех парных графиков между числовыми признаками DataFrame.", "A set of all pairwise plots between numeric DataFrame features."],
+    ["Категориальный график, который объединяет boxplot и KDE.", "A categorical plot combining a boxplot and KDE."]
+  ],
+  59: [
+    ["Матрица парных графиков для нескольких числовых переменных.", "A matrix of pairwise plots for several numeric variables."],
+    ["График совместного распределения для выбранной пары признаков.", "A joint distribution plot for a selected pair of features."],
+    ["Гистограмма, разделенная на FacetGrid-колонки по категории.", "A histogram split into FacetGrid columns by category."]
+  ],
+  60: [
+    ["Для сравнения распределения числовой переменной по категориям.", "For comparing a numeric-variable distribution across categories."],
+    ["Для отображения всех парных связей числовых признаков.", "For showing all pairwise relationships of numeric features."],
+    ["Для построения двумерных contour levels на сетке X/Y.", "For drawing two-dimensional contour levels on an X/Y grid."]
+  ],
+  61: [
+    ["Оценку плотности распределения внутри каждой категории.", "An estimate of distribution density within each category."],
+    ["Линии равного значения на двумерной числовой сетке.", "Equal-value lines on a two-dimensional numeric grid."],
+    ["Медиану и межквартильный размах без формы распределения.", "The median and interquartile range without the distribution shape."]
+  ],
+  62: [
+    ["Violin показывает форму плотности распределения, а box plot - квартильную сводку.", "Violin shows the density shape of a distribution, while box plot shows a quartile summary."],
+    ["Violin показывает медиану, а box plot показывает всю KDE-плотность.", "Violin shows the median, while box plot shows the whole KDE density."],
+    ["Violin применяется к двум числовым осям, а box plot связывают со scatter plot.", "Violin applies to two numeric axes, while box plot is tied to scatter plots."]
+  ],
+  63: [
+    ["Гистограмму или KDE-график распределения.", "A histogram or KDE distribution plot."],
+    ["Scatter plot с `hue` и `size`.", "A scatter plot with `hue` and `size`."],
+    ["Boxplot или violin plot по категориям.", "A boxplot or violin plot by categories."]
+  ],
+  64: [
+    ["Scatter plot или relational plot.", "A scatter plot or relational plot."],
+    ["Histplot или displot с одной переменной.", "A histplot or displot with one variable."],
+    ["Boxplot с категориальной осью.", "A boxplot with a categorical axis."]
+  ],
+  65: [
+    ["Boxplot или violin plot.", "A boxplot or violin plot."],
+    ["Contour или pcolormesh.", "A contour or pcolormesh plot."],
+    ["Jointplot или pairplot.", "A jointplot or pairplot."]
+  ],
+  66: [
+    ["Pairplot, потому что он показывает все парные связи числовых признаков.", "Pairplot, because it shows all pairwise relationships of numeric features."],
+    ["Histplot, потому что он показывает распределение одной переменной.", "Histplot, because it shows the distribution of one variable."],
+    ["Violin plot, потому что он сравнивает числовой признак по категориям.", "Violin plot, because it compares a numeric feature by categories."]
+  ],
+  67: [
+    ["pcolormesh или contour/contourf.", "pcolormesh or contour/contourf."],
+    ["pairplot с `hue` по категориям.", "pairplot with `hue` by categories."],
+    ["histplot с `multiple='stack'`.", "histplot with `multiple='stack'`."]
+  ],
+  68: [
+    ["Создает 30 равномерно расположенных значений от 0 до 3.", "Creates 30 evenly spaced values from 0 to 3."],
+    ["Создает значения от 0 до 30 с шагом 3.", "Creates values from 0 to 30 with step 3."],
+    ["Создает 3 случайных массива по 30 элементов.", "Creates 3 random arrays with 30 elements each."]
+  ],
+  69: [
+    ["Создает случайные значения той же длины, что и массив `x`.", "Creates random values with the same length as array `x`."],
+    ["Создает регулярную двумерную сетку для contour plot.", "Creates a regular two-dimensional grid for a contour plot."],
+    ["Создает цветовую шкалу для scatter plot.", "Creates a color scale for a scatter plot."]
+  ],
+  70: [
+    ["Создает Figure и Axes, после чего график строится через методы `ax`.", "Creates Figure and Axes, after which the plot is built through `ax` methods."],
+    ["Создает текущую Figure для последующих команд `plt.*`.", "Creates the current Figure for later `plt.*` commands."],
+    ["Создает Seaborn FacetGrid для статистических распределений.", "Creates a Seaborn FacetGrid for statistical distributions."]
+  ],
+  71: [
+    ["Группы из `hue` отображаются как составная stacked histogram.", "Groups from `hue` are displayed as a combined stacked histogram."],
+    ["Каждая категория `hue` строится в отдельной FacetGrid-колонке.", "Each `hue` category is plotted in a separate FacetGrid column."],
+    ["Цвет точки задается числовой шкалой и отображается через colorbar.", "Point color is set by a numeric scale and shown through a colorbar."]
+  ],
+  72: [
+    ["Нужно выбирать график под задачу и уметь настраивать его элементы.", "You need to choose a plot for the task and configure its elements."],
+    ["Нужно знать готовые Seaborn-графики без устройства Matplotlib.", "You need to know ready Seaborn plots without Matplotlib structure."],
+    ["Нужно строить все визуализации одним стилем, чтобы ответы были одинаковыми.", "You need to build all visualizations in one style so answers are uniform."]
+  ]
+};
+
+cards.forEach(card => {
+  if (balancedDistractors[card.id]) {
+    card.choices = [
+      card.choices[0],
+      ...balancedDistractors[card.id].map(item => ({ ru: item[0], en: item[1] }))
+    ];
+  }
+});
