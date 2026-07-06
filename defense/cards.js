@@ -3358,5 +3358,285 @@ const cards = [
       ru: "Тон должен быть спокойным: признать прошлую проблему и показать готовность.",
       en: "The tone should be calm: acknowledge the previous issue and show readiness."
     }
+  },
+  {
+    id: 97,
+    topic: "Models",
+    visual: "assets/models.svg",
+    question: {
+      ru: "Как Logistic Regression может работать с тремя классами species?",
+      en: "How can Logistic Regression work with three species classes?"
+    },
+    answer: {
+      ru: "В sklearn Logistic Regression поддерживает multi-class: модель оценивает вероятности классов и выбирает класс с максимальной вероятностью.",
+      en: "In sklearn, Logistic Regression supports multi-class classification: it estimates class probabilities and selects the class with the highest probability."
+    },
+    choices: [
+      {
+        ru: "В sklearn Logistic Regression поддерживает multi-class: модель оценивает вероятности классов и выбирает класс с максимальной вероятностью.",
+        en: "In sklearn, Logistic Regression supports multi-class classification: it estimates class probabilities and selects the class with the highest probability."
+      },
+      {
+        ru: "Она кодирует виды числами, решает regression task и округляет результат до ближайшего класса.",
+        en: "It encodes species as numbers, solves a regression task, and rounds the result to the nearest class."
+      },
+      {
+        ru: "Она оставляет два вида при обучении, а третий вид добавляет только во время оценки качества.",
+        en: "It keeps two species during training and adds the third species only during model evaluation."
+      },
+      {
+        ru: "Она заменяет labels на clusters и выбирает species без использования target variable.",
+        en: "It replaces labels with clusters and chooses species without using the target variable."
+      }
+    ],
+    explain: {
+      ru: "Главная мысль для защиты: binary Logistic Regression расширяется на multi-class через OvR или multinomial/softmax подход.",
+      en: "The key defense idea: binary Logistic Regression can be extended to multi-class through OvR or a multinomial/softmax approach."
+    }
+  },
+  {
+    id: 98,
+    topic: "Oral defense",
+    visual: "assets/oral.svg",
+    question: {
+      ru: "Как ответить: `Logistic Regression is binary, but you have three classes. How did you adapt it?`",
+      en: "How should Andrey answer: `Logistic Regression is binary, but you have three classes. How did you adapt it?`"
+    },
+    answer: {
+      ru: "Logistic Regression is often introduced for binary classification, but sklearn supports multi-class. For three species it estimates probabilities for each class and predicts the class with the highest probability.",
+      en: "Logistic Regression is often introduced for binary classification, but sklearn supports multi-class. For three species it estimates probabilities for each class and predicts the class with the highest probability."
+    },
+    choices: [
+      {
+        ru: "Logistic Regression is often introduced for binary classification, but sklearn supports multi-class. For three species it estimates probabilities for each class and predicts the class with the highest probability.",
+        en: "Logistic Regression is often introduced for binary classification, but sklearn supports multi-class. For three species it estimates probabilities for each class and predicts the class with the highest probability."
+      },
+      {
+        ru: "Logistic Regression is mainly regression, so I converted the three species into numbers and treated the output as an ordered value.",
+        en: "Logistic Regression is mainly regression, so I converted the three species into numbers and treated the output as an ordered value."
+      },
+      {
+        ru: "Logistic Regression cannot support three classes, so I used it only as a visual baseline and did not evaluate it.",
+        en: "Logistic Regression cannot support three classes, so I used it only as a visual baseline and did not evaluate it."
+      },
+      {
+        ru: "Logistic Regression was adapted by removing one species from training and using the remaining two classes.",
+        en: "Logistic Regression was adapted by removing one species from training and using the remaining two classes."
+      }
+    ],
+    explain: {
+      ru: "Это готовая формулировка для устной защиты: признать binary origin и сразу объяснить multi-class mechanism.",
+      en: "This is a ready oral-defense answer: acknowledge the binary origin and explain the multi-class mechanism."
+    }
+  },
+  {
+    id: 99,
+    topic: "Models",
+    visual: "assets/models.svg",
+    question: {
+      ru: "Чем One-vs-Rest отличается от multinomial Logistic Regression?",
+      en: "How is One-vs-Rest different from multinomial Logistic Regression?"
+    },
+    answer: {
+      ru: "One-vs-Rest обучает отдельный binary classifier для каждого класса против остальных, а multinomial оценивает классы совместно.",
+      en: "One-vs-Rest trains a separate binary classifier for each class against the rest, while multinomial evaluates the classes jointly."
+    },
+    choices: [
+      {
+        ru: "One-vs-Rest обучает отдельный binary classifier для каждого класса против остальных, а multinomial оценивает классы совместно.",
+        en: "One-vs-Rest trains a separate binary classifier for each class against the rest, while multinomial evaluates the classes jointly."
+      },
+      {
+        ru: "One-vs-Rest нужен для regression, а multinomial нужен только для unsupervised clustering.",
+        en: "One-vs-Rest is used for regression, while multinomial is used only for unsupervised clustering."
+      },
+      {
+        ru: "One-vs-Rest удаляет rare classes, а multinomial оставляет только самый частый class label.",
+        en: "One-vs-Rest removes rare classes, while multinomial keeps only the most frequent class label."
+      },
+      {
+        ru: "One-vs-Rest выбирает `k` соседей, а multinomial выбирает глубину Decision Tree.",
+        en: "One-vs-Rest selects `k` neighbors, while multinomial selects Decision Tree depth."
+      }
+    ],
+    explain: {
+      ru: "Если преподаватель уточнит механизм, это короткое различие достаточно для уверенного ответа.",
+      en: "If the teacher asks for the mechanism, this short distinction is enough for a confident answer."
+    }
+  },
+  {
+    id: 100,
+    topic: "Models",
+    visual: "assets/models.svg",
+    question: {
+      ru: "Что такое `k` в KNN?",
+      en: "What is `k` in KNN?"
+    },
+    answer: {
+      ru: "`k` - это количество ближайших соседей, которые голосуют за predicted class.",
+      en: "`k` is the number of nearest neighbors that vote for the predicted class."
+    },
+    choices: [
+      {
+        ru: "`k` - это количество ближайших соседей, которые голосуют за predicted class.",
+        en: "`k` is the number of nearest neighbors that vote for the predicted class."
+      },
+      {
+        ru: "`k` - это количество классов в target variable, поэтому оно всегда равно числу species.",
+        en: "`k` is the number of classes in the target variable, so it is always equal to the number of species."
+      },
+      {
+        ru: "`k` - это коэффициент regularization, который уменьшает веса Logistic Regression.",
+        en: "`k` is a regularization coefficient that shrinks Logistic Regression weights."
+      },
+      {
+        ru: "`k` - это количество trees в Random Forest, которые участвуют в majority vote.",
+        en: "`k` is the number of trees in a Random Forest that participate in majority voting."
+      }
+    ],
+    explain: {
+      ru: "Для проекта это означает: новый пингвин получает класс по голосованию ближайших похожих пингвинов.",
+      en: "In the project, this means a new penguin gets a class by voting among the nearest similar penguins."
+    }
+  },
+  {
+    id: 101,
+    topic: "Validation",
+    visual: "assets/validation.svg",
+    question: {
+      ru: "Как правильно выбирать `k` в KNN?",
+      en: "How should `k` be selected in KNN?"
+    },
+    answer: {
+      ru: "Подбирать `k` на validation set или cross-validation, сравнивая качество для нескольких значений, а test set оставить для финальной оценки.",
+      en: "Select `k` on a validation set or with cross-validation by comparing several values, while keeping the test set for final evaluation."
+    },
+    choices: [
+      {
+        ru: "Подбирать `k` на validation set или cross-validation, сравнивая качество для нескольких значений, а test set оставить для финальной оценки.",
+        en: "Select `k` on a validation set or with cross-validation by comparing several values, while keeping the test set for final evaluation."
+      },
+      {
+        ru: "Выбирать `k` по test accuracy, затем использовать тот же test set как независимую оценку.",
+        en: "Choose `k` by test accuracy, then use the same test set as the independent estimate."
+      },
+      {
+        ru: "Ставить `k` равным числу классов, потому что в проекте есть три species.",
+        en: "Set `k` equal to the number of classes because the project has three species."
+      },
+      {
+        ru: "Выбирать `k` по самому большому признаку, чтобы `body_mass_g` стал главным фактором.",
+        en: "Choose `k` from the largest feature so that `body_mass_g` becomes the main factor."
+      }
+    ],
+    explain: {
+      ru: "Это прямой ответ на вопрос `How did you set K?`: правильно говорить про validation/cross-validation, не про test tuning.",
+      en: "This directly answers `How did you set K?`: talk about validation/cross-validation, not test tuning."
+    }
+  },
+  {
+    id: 102,
+    topic: "Oral defense",
+    visual: "assets/oral.svg",
+    question: {
+      ru: "Как честно ответить, если в notebook `k` не подбирался отдельно?",
+      en: "How should Andrey answer honestly if `k` was not tuned separately in the notebook?"
+    },
+    answer: {
+      ru: "I used KNN as a baseline. The better way is to treat `k` as a hyperparameter and tune it with cross-validation, for example using GridSearchCV.",
+      en: "I used KNN as a baseline. The better way is to treat `k` as a hyperparameter and tune it with cross-validation, for example using GridSearchCV."
+    },
+    choices: [
+      {
+        ru: "I used KNN as a baseline. The better way is to treat `k` as a hyperparameter and tune it with cross-validation, for example using GridSearchCV.",
+        en: "I used KNN as a baseline. The better way is to treat `k` as a hyperparameter and tune it with cross-validation, for example using GridSearchCV."
+      },
+      {
+        ru: "I chose `k` after checking the test set many times, because the test set is the safest place for tuning.",
+        en: "I chose `k` after checking the test set many times, because the test set is the safest place for tuning."
+      },
+      {
+        ru: "I selected `k` from the target labels, because KNN must use one neighbor for each class.",
+        en: "I selected `k` from the target labels, because KNN must use one neighbor for each class."
+      },
+      {
+        ru: "I did not need to think about `k`, because KNN learns the best value automatically during fitting.",
+        en: "I did not need to think about `k`, because KNN learns the best value automatically during fitting."
+      }
+    ],
+    explain: {
+      ru: "Такой ответ не притворяется, что tuning уже был сделан, и показывает понимание правильной процедуры.",
+      en: "This answer does not pretend tuning was already done and shows understanding of the correct procedure."
+    }
+  },
+  {
+    id: 103,
+    topic: "Validation",
+    visual: "assets/validation.svg",
+    question: {
+      ru: "Почему `k` в KNN является hyperparameter?",
+      en: "Why is `k` in KNN a hyperparameter?"
+    },
+    answer: {
+      ru: "Потому что `k` задается до обучения и влияет на поведение модели; модель не учит это значение из данных сама.",
+      en: "Because `k` is set before training and affects model behavior; the model does not learn this value from the data by itself."
+    },
+    choices: [
+      {
+        ru: "Потому что `k` задается до обучения и влияет на поведение модели; модель не учит это значение из данных сама.",
+        en: "Because `k` is set before training and affects model behavior; the model does not learn this value from the data by itself."
+      },
+      {
+        ru: "Потому что `k` является learned coefficient, который обновляется после каждой ошибки.",
+        en: "Because `k` is a learned coefficient that is updated after each error."
+      },
+      {
+        ru: "Потому что `k` равно числу строк в train set и меняется после каждого prediction.",
+        en: "Because `k` equals the number of rows in the train set and changes after every prediction."
+      },
+      {
+        ru: "Потому что `k` хранит probability threshold для Logistic Regression.",
+        en: "Because `k` stores the probability threshold for Logistic Regression."
+      }
+    ],
+    explain: {
+      ru: "Связка для защиты: parameter learns from data, hyperparameter is chosen before fitting.",
+      en: "Defense link: a parameter is learned from data, a hyperparameter is chosen before fitting."
+    }
+  },
+  {
+    id: 104,
+    topic: "Oral defense",
+    visual: "assets/oral.svg",
+    question: {
+      ru: "Как ответить: `Can you tell me about Random Forest?`",
+      en: "How should Andrey answer: `Can you tell me about Random Forest?`"
+    },
+    answer: {
+      ru: "Random Forest is an ensemble of decision trees. Each tree is trained with randomness in samples and features, and for classification the forest uses majority voting.",
+      en: "Random Forest is an ensemble of decision trees. Each tree is trained with randomness in samples and features, and for classification the forest uses majority voting."
+    },
+    choices: [
+      {
+        ru: "Random Forest is an ensemble of decision trees. Each tree is trained with randomness in samples and features, and for classification the forest uses majority voting.",
+        en: "Random Forest is an ensemble of decision trees. Each tree is trained with randomness in samples and features, and for classification the forest uses majority voting."
+      },
+      {
+        ru: "Random Forest is a distance-based model. It predicts a class by looking at nearest scaled observations.",
+        en: "Random Forest is a distance-based model. It predicts a class by looking at nearest scaled observations."
+      },
+      {
+        ru: "Random Forest is a linear classifier. It estimates one boundary and converts scores into probabilities.",
+        en: "Random Forest is a linear classifier. It estimates one boundary and converts scores into probabilities."
+      },
+      {
+        ru: "Random Forest is an evaluation metric. It summarizes confusion matrix errors into a single score.",
+        en: "Random Forest is an evaluation metric. It summarizes confusion matrix errors into a single score."
+      }
+    ],
+    explain: {
+      ru: "В ответе должны прозвучать три идеи: ensemble, decision trees, majority voting.",
+      en: "The answer should include three ideas: ensemble, decision trees, majority voting."
+    }
   }
 ];
